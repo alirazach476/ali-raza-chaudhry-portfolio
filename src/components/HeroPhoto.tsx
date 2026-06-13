@@ -12,19 +12,29 @@ interface HeroPhotoProps {
 
 export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const imgRef = useRef<HTMLImageElement>(null)
   const offset = useMouseParallax({ intensity: immersive ? 20 : 16 })
   const reduced = useReducedMotion()
-  const [ready, setReady] = useState(false)
+  const [loaded, setLoaded] = useState(false)
   const [imageError, setImageError] = useState(false)
 
+  const markLoaded = () => setLoaded(true)
+
   useEffect(() => {
-    if (!containerRef.current || reduced || !ready) return
+    const img = imgRef.current
+    if (img?.complete && img.naturalWidth > 0) {
+      setLoaded(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!containerRef.current || reduced || !loaded) return
     gsap.fromTo(
       containerRef.current,
       { scale: 1.05, opacity: 0, y: 50 },
       { scale: 1, opacity: 1, y: 0, duration: 1.5, ease: 'power3.out', delay: 0.4 }
     )
-  }, [reduced, ready])
+  }, [reduced, loaded])
 
   const parallaxStyle = reduced
     ? {}
@@ -34,25 +44,12 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
 
   const stageClass = immersive ? 'hero-photo-immersive' : 'hero-photo-stage'
 
-  const handleImageReady = () => setReady(true)
-  const handleImageError = () => {
-    setImageError(true)
-    setReady(true)
-  }
-
-  if (!ready && !imageError) {
-    return (
-      <div className={`${stageClass} animate-pulse`} aria-hidden="true">
-        <div className="h-[85vh] w-56 bg-white/5 rounded-t-full mx-auto" />
-      </div>
-    )
-  }
-
   if (imageError) {
     return (
       <div ref={containerRef} className={stageClass} style={parallaxStyle}>
         <div className="glass rounded-2xl p-8 text-center text-sm text-text-muted z-30">
-          Run <code className="text-cyan">npm run cutout</code> to process your photo.
+          Hero photo missing. Add <code className="text-cyan">public/abdullah.webp</code> or run{' '}
+          <code className="text-cyan">npm run cutout</code>.
         </div>
       </div>
     )
@@ -60,10 +57,20 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
 
   return (
     <div ref={containerRef} className={stageClass} style={parallaxStyle}>
+      {!loaded && (
+        <div className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none" aria-hidden="true">
+          <div className="h-[85vh] w-56 bg-white/5 rounded-t-full mx-auto animate-pulse" />
+        </div>
+      )}
+
       <div className="hero-photo-rim hero-photo-rim--immersive" aria-hidden="true" />
 
-      <div className={`hero-photo-inner${reduced ? '' : ' hero-photo-float'}`}>
+      <div
+        className={`hero-photo-inner${reduced ? '' : ' hero-photo-float'}`}
+        style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.4s ease' }}
+      >
         <OptimizedImage
+          ref={imgRef}
           baseSrc={PHOTO_BASE}
           fallbackExt="png"
           alt="Abdullah Yaseen — Full-Stack Developer & AI Engineer"
@@ -71,8 +78,11 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
           height={1000}
           fetchPriority="high"
           decoding="async"
-          onLoad={handleImageReady}
-          onError={handleImageError}
+          onLoad={markLoaded}
+          onError={() => {
+            setImageError(true)
+            setLoaded(true)
+          }}
           className={immersive ? 'hero-photo-cutout--immersive' : 'hero-photo-cutout'}
         />
 
