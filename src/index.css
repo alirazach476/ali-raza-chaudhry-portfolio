@@ -186,10 +186,10 @@ body {
 @keyframes hero-photo-float-desktop {
   0%,
   100% {
-    transform: translateY(3.5vh);
+    transform: translateY(1.5vh);
   }
   50% {
-    transform: translateY(calc(3.5vh - 10px));
+    transform: translateY(calc(1.5vh - 10px));
   }
 }
 
@@ -203,7 +203,7 @@ body {
 
   @media (min-width: 1024px) {
     .hero-photo-inner {
-      transform: translateY(3.5vh);
+      transform: translateY(1.5vh);
     }
   }
 
@@ -1609,10 +1609,13 @@ body {
 
 .hero-photo-immersive {
   position: absolute;
-  inset: 0;
+  top: clamp(4.75rem, 9vh, 6.75rem);
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 5;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   pointer-events: none;
 }
@@ -1622,7 +1625,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
@@ -1630,10 +1633,10 @@ body {
   position: relative;
   z-index: 10;
   width: auto;
-  height: clamp(560px, 90vh, 980px);
+  height: clamp(520px, 82vh, 920px);
   max-width: min(94vw, 800px);
   object-fit: contain;
-  object-position: bottom center;
+  object-position: center center;
   filter: drop-shadow(0 0 140px rgba(124, 58, 237, 0.5))
     drop-shadow(0 55px 110px rgba(0, 0, 0, 0.78))
     contrast(1.1) saturate(1.2);
@@ -1641,14 +1644,14 @@ body {
 
 @media (min-width: 1024px) {
   .hero-photo-cutout--immersive {
-    height: clamp(720px, 98vh, 1180px);
+    height: clamp(640px, 86vh, 1040px);
     max-width: min(72vw, 1020px);
   }
 }
 
 @media (min-width: 1280px) {
   .hero-photo-cutout--immersive {
-    height: clamp(780px, 100vh, 1240px);
+    height: clamp(680px, 88vh, 1100px);
     max-width: min(68vw, 1100px);
   }
 }
@@ -1673,10 +1676,10 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 9rem;
+  height: clamp(6rem, 12vh, 8.5rem);
   z-index: 6;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.4) 55%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.55) 50%, transparent 100%);
 }
 
 .hero-immersive-vignette {
@@ -1905,8 +1908,12 @@ body {
 /* ── Mobile responsive overrides ── */
 
 @media (max-width: 1023px) {
+  .hero-photo-immersive {
+    top: 5.25rem;
+  }
+
   .hero-photo-cutout--immersive {
-    height: clamp(380px, 68vh, 640px);
+    height: clamp(380px, 62vh, 600px);
     max-width: min(92vw, 560px);
   }
 
