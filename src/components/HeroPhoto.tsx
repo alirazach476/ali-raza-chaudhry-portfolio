@@ -59,7 +59,7 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
     <div ref={containerRef} className={stageClass} style={parallaxStyle}>
       {!loaded && (
         <div className="absolute inset-0 z-20 flex items-end justify-center pointer-events-none" aria-hidden="true">
-          <div className="h-[85vh] w-56 bg-white/5 rounded-t-full mx-auto animate-pulse" />
+          <div className="h-[92vh] max-h-[1080px] w-72 md:w-96 bg-white/5 rounded-t-full mx-auto animate-pulse" />
         </div>
       )}
 
@@ -74,8 +74,8 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
           baseSrc={PHOTO_BASE}
           fallbackExt="png"
           alt="Abdullah Yaseen — Full-Stack Developer & AI Engineer"
-          width={700}
-          height={1000}
+          width={900}
+          height={1200}
           fetchPriority="high"
           decoding="async"
           onLoad={markLoaded}
