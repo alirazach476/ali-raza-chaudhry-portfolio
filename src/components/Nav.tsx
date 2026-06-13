@@ -6,14 +6,14 @@ import { scrollTo } from '../providers/SmoothScrollProvider'
 import { useActiveSection } from '../hooks/useActiveSection'
 
 const LINKS = [
-  { label: 'About', href: '#about', id: 'about', accent: 'violet' },
-  { label: 'Experience', href: '#experience', id: 'experience', accent: 'cyan' },
-  { label: 'Work', href: '#projects', id: 'projects', accent: 'pink' },
-  { label: 'Expertise', href: '#expertise', id: 'expertise', accent: 'amber' },
-  { label: 'Services', href: '#services', id: 'services', accent: 'indigo' },
-  { label: 'Stack', href: '#stack', id: 'stack', accent: 'cyan' },
-  { label: 'Contact', href: '#contact', id: 'contact', accent: 'pink' },
-] as const
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Experience', href: '#experience', id: 'experience' },
+  { label: 'Work', href: '#projects', id: 'projects' },
+  { label: 'Expertise', href: '#expertise', id: 'expertise' },
+  { label: 'Services', href: '#services', id: 'services' },
+  { label: 'Stack', href: '#stack', id: 'stack' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
+]
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -39,42 +39,43 @@ export function Nav() {
 
   return (
     <header
-      className={`nav-header fixed top-0 left-0 right-0 z-[9000] transition-all duration-500 ${
-        scrolled ? 'nav-header--scrolled py-3' : 'py-4 md:py-5'
+      className={`fixed top-0 left-0 right-0 z-[9000] transition-all duration-500 ${
+        scrolled ? 'py-3' : 'py-5'
       }`}
     >
       <div
-        className={`nav-shell mx-4 md:mx-8 transition-all duration-500 ${
-          scrolled ? 'nav-shell--scrolled' : 'nav-shell--hero'
+        className={`mx-4 md:mx-8 rounded-2xl transition-all duration-500 ${
+          scrolled ? 'glass shadow-[0_4px_30px_rgba(0,0,0,0.3)]' : 'bg-transparent'
         }`}
       >
-        <nav className="nav-inner flex items-center justify-between px-4 md:px-7 py-2.5" aria-label="Main navigation">
+        <nav className="flex items-center justify-between px-5 md:px-8 py-3" aria-label="Main navigation">
           <Link
             to="/"
-            className="nav-logo focus:outline-none focus-visible:ring-2 focus-visible:ring-violet/50 rounded-xl"
+            className="font-display text-sm tracking-wider gradient-text focus:outline-none focus-visible:ring-2 focus-visible:ring-violet/50 rounded"
             data-cursor-hover
           >
-            <span className="nav-logo-mark font-display">AY</span>
+            AY
           </Link>
 
-          <div className="nav-links hidden lg:flex items-center gap-0.5 px-1.5 py-1">
-            {LINKS.map((link) => {
-              const isActive = isHome && activeSection === link.id
-              return (
-                <button
-                  key={link.href}
-                  onClick={() => handleNav(link.href)}
-                  data-accent={link.accent}
-                  className={`nav-link ${isActive ? 'nav-link--active' : ''}`}
-                  data-cursor-hover
-                  aria-current={isActive ? 'true' : undefined}
-                >
-                  <span className="nav-link-bg" aria-hidden="true" />
-                  <span className="nav-link-text">{link.label}</span>
-                  {isActive && <span className="nav-link-indicator" aria-hidden="true" />}
-                </button>
-              )
-            })}
+          <div className="hidden lg:flex items-center gap-1">
+            {LINKS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNav(link.href)}
+                className={`relative px-4 py-2 text-sm transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet/50 rounded-lg ${
+                  isHome && activeSection === link.id
+                    ? 'text-text'
+                    : 'text-text-muted hover:text-text'
+                }`}
+                data-cursor-hover
+                aria-current={isHome && activeSection === link.id ? 'true' : undefined}
+              >
+                {link.label}
+                {isHome && activeSection === link.id && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-cyan" />
+                )}
+              </button>
+            ))}
           </div>
 
           <div className="hidden md:flex items-center gap-3">
@@ -104,7 +105,7 @@ export function Nav() {
       </div>
 
       {mobileOpen && (
-        <div className="nav-mobile-panel md:hidden mx-4 mt-2 p-4">
+        <div className="nav-mobile-panel md:hidden mx-4 mt-2 glass rounded-2xl p-4">
             <div className="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <AvailabilityBadge className="w-full sm:w-auto justify-center" />
               <ResumeButton
@@ -113,22 +114,17 @@ export function Nav() {
                 label="Download Resume ↗"
               />
             </div>
-            <div className="nav-mobile-links">
-              {LINKS.map((link) => {
-                const isActive = isHome && activeSection === link.id
-                return (
-                  <button
-                    key={link.href}
-                    onClick={() => handleNav(link.href)}
-                    data-accent={link.accent}
-                    className={`nav-mobile-link ${isActive ? 'nav-mobile-link--active' : ''}`}
-                  >
-                    <span className="nav-mobile-link-dot" aria-hidden="true" />
-                    <span className="nav-mobile-link-text">{link.label}</span>
-                  </button>
-                )
-              })}
-            </div>
+            {LINKS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNav(link.href)}
+                className={`block w-full text-left px-4 py-3 text-sm transition-colors ${
+                  isHome && activeSection === link.id ? 'text-cyan' : 'text-text-muted hover:text-text'
+                }`}
+              >
+                {link.label}
+              </button>
+            ))}
           </div>
         )}
     </header>
