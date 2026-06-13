@@ -36,9 +36,24 @@ const AVATARS = [
   },
 ]
 
+const LOGO_SELECTORS = [
+  'header img:not([width="1"]):not([height="1"])',
+  'nav img:not([width="1"]):not([height="1"])',
+  '[class*="logo" i] img',
+  '[id*="logo" i] img',
+  'a[aria-label*="logo" i] img',
+  '.navbar-brand img',
+  'header a > img',
+  'nav a > img',
+  'header svg',
+  'nav svg',
+  '[class*="brand" i] img',
+]
+
 async function downloadBuffer(url) {
   const res = await fetch(url, {
     headers: { 'User-Agent': 'Mozilla/5.0 (compatible; PortfolioAssetBot/1.0)' },
+    redirect: 'follow',
   })
   const buf = Buffer.from(await res.arrayBuffer())
   if (buf.length < 80) throw new Error(`HTTP ${res.status} (empty)`)
@@ -46,89 +61,109 @@ async function downloadBuffer(url) {
   return buf
 }
 
-async function saveWebp(buffer, outBase) {
+async function saveLogo(buffer, outBase) {
   const pngPath = `${outBase}.png`
   const webpPath = `${outBase}.webp`
-  try {
-    await sharp(buffer).resize(256, 256, { fit: 'contain', background: { r: 7, g: 7, b: 8, alpha: 1 } }).png().toFile(pngPath)
-  } catch {
-    // ICO/SVG or odd formats — use Google favicon fallback handled by caller
-    throw new Error('unsupported image format')
-  }
-  await sharp(pngPath).webp({ quality: 88 }).toFile(webpPath)
-  console.log(`  ✓ ${path.basename(webpPath)}`)
+
+  const pipeline = sharp(buffer)
+    .resize(256, 256, {
+      fit: 'contain',
+      background: { r: 255, g: 255, b: 255, alpha: 1 },
+    })
+    .flatten({ background: { r: 255, g: 255, b: 255 } })
+    .png()
+
+  await pipeline.toFile(pngPath)
+  await sharp(pngPath).webp({ quality: 90 }).toFile(webpPath)
+  console.log(`  ✓ ${path.basename(webpPath)} (${fs.statSync(webpPath).size} bytes)`)
 }
 
 async function googleFavicon(hostname) {
-  return downloadBuffer(`https://www.google.com/s2/favicons?domain=${hostname}&sz=128`)
+  return downloadBuffer(`https://www.google.com/s2/favicons?domain=${hostname}&sz=256`)
 }
 
-async function fetchLogoFromSite(page, brand) {
-  const hostname = new URL(brand.url).hostname
-
-  await page.goto(brand.url, { waitUntil: 'domcontentloaded', timeout: 45000 })
-  await page.waitForTimeout(2500)
-
-  if (brand.slug === 'nyuton') {
+async function dismissOverlays(page, slug) {
+  if (slug === 'nyuton') {
     await page.evaluate(() => {
       document.getElementById('loadingScreen')?.remove()
       document.querySelectorAll('.loading-screen').forEach((el) => el.remove())
     })
     await page.waitForTimeout(1000)
   }
-
-  const iconUrl = await page.evaluate(() => {
-    const icons = Array.from(document.querySelectorAll('link[rel*="icon"]'))
-    const apple = document.querySelector('link[rel="apple-touch-icon"]')
-    const best =
-      apple?.getAttribute('href') ||
-      icons.find((l) => (l.getAttribute('sizes') || '').includes('192'))?.getAttribute('href') ||
-      icons.find((l) => (l.getAttribute('type') || '').includes('png'))?.getAttribute('href') ||
-      icons[0]?.getAttribute('href')
-    if (!best) return null
-    try {
-      return new URL(best, location.href).href
-    } catch {
-      return null
-    }
-  })
-
-  if (iconUrl) {
-    try {
-      const buf = await downloadBuffer(iconUrl)
-      if (buf.length > 200) return buf
-    } catch {
-      /* try fallbacks */
-    }
-  }
-
-  return googleFavicon(hostname)
 }
 
-async function duckFavicon(hostname) {
-  return downloadBuffer(`https://icons.duckduckgo.com/ip3/${hostname}.ico`)
+async function screenshotLogoElement(page) {
+  for (const selector of LOGO_SELECTORS) {
+    const locator = page.locator(selector).first()
+    try {
+      if ((await locator.count()) === 0) continue
+      if (!(await locator.isVisible())) continue
+
+      const box = await locator.boundingBox()
+      if (!box || box.width < 12 || box.height < 12) continue
+      if (box.width > 420 || box.height > 220) continue
+
+      const buffer = await locator.screenshot({ type: 'png', omitBackground: true })
+      if (buffer.length > 400) return buffer
+    } catch {
+      /* try next selector */
+    }
+  }
+  return null
+}
+
+async function fetchMetaImage(page) {
+  const urls = await page.evaluate(() => {
+    const candidates = []
+    const og = document.querySelector('meta[property="og:image"]')?.getAttribute('content')
+    const apple = document.querySelector('link[rel="apple-touch-icon"]')?.getAttribute('href')
+    const icons = Array.from(document.querySelectorAll('link[rel*="icon"]'))
+      .map((l) => l.getAttribute('href'))
+      .filter(Boolean)
+
+    if (og) candidates.push(og)
+    if (apple) candidates.push(apple)
+    candidates.push(...icons)
+    return candidates
+  })
+
+  for (const raw of urls) {
+    try {
+      const absolute = new URL(raw, page.url()).href
+      const buf = await downloadBuffer(absolute)
+      if (buf.length > 400) return buf
+    } catch {
+      /* next */
+    }
+  }
+  return null
+}
+
+async function fetchLogoFromSite(page, brand) {
+  const hostname = new URL(brand.url).hostname
+
+  await page.goto(brand.url, { waitUntil: 'networkidle', timeout: 60000 })
+  await page.waitForTimeout(2000)
+  await dismissOverlays(page, brand.slug)
+
+  const screenshot = await screenshotLogoElement(page)
+  if (screenshot) return screenshot
+
+  const metaImage = await fetchMetaImage(page)
+  if (metaImage) return metaImage
+
+  return googleFavicon(hostname)
 }
 
 async function fetchLogos() {
   console.log('Fetching brand logos...\n')
   const browser = await chromium.launch({ headless: true })
-  const page = await browser.newPage()
+  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
 
   for (const brand of BRANDS) {
     try {
-      let buffer = await fetchLogoFromSite(page, brand)
-      try {
-        await saveWebp(buffer, path.join(logosDir, brand.slug))
-      } catch {
-        const host = new URL(brand.url).hostname
-        try {
-          buffer = await duckFavicon(host)
-          await saveWebp(buffer, path.join(logosDir, brand.slug))
-        } catch {
-          buffer = await googleFavicon(host)
-          await saveWebp(buffer, path.join(logosDir, brand.slug))
-        }
-      }
+      const buffer = await fetchLogoFromSite(page, brand)
+      await saveLogo(buffer, path.join(logosDir, brand.slug))
     } catch (e) {
       console.warn(`  ✗ ${brand.slug}: ${e instanceof Error ? e.message : e}`)
     }

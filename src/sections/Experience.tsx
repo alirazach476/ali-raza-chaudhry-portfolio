@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionHeading } from '../components/SectionHeading'
+import { BrandLogo } from '../components/BrandLogo'
 import { EXPERIENCE } from '../data/experience'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
@@ -28,14 +29,11 @@ function CompanyBadge({
       style={{ boxShadow: `0 0 24px ${glow}` }}
     >
       {logo && !error ? (
-        <div className="w-full h-full rounded-lg bg-white/95 flex items-center justify-center p-1">
-          <img
-            src={logo}
+        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-1.5">
+          <BrandLogo
+            logo={logo}
             alt={`${company} logo`}
-            className="max-w-full max-h-full object-contain"
-            loading="lazy"
-            decoding="async"
-            onError={() => setError(true)}
+            onFailed={() => setError(true)}
           />
         </div>
       ) : (

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionHeading } from '../components/SectionHeading'
+import { BrandLogo } from '../components/BrandLogo'
 import { TESTIMONIALS, TRUSTED_LOGOS } from '../data/socialProof'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
@@ -64,15 +65,8 @@ function TrustedLogoMark({
       style={{ boxShadow: `0 6px 24px ${glow}` }}
     >
       {logo && !error ? (
-        <div className="w-full h-full rounded-lg bg-white/95 flex items-center justify-center p-1.5 shadow-inner">
-          <img
-            src={logo}
-            alt={`${name} logo`}
-            className="max-w-full max-h-full object-contain"
-            loading="lazy"
-            decoding="async"
-            onError={() => setError(true)}
-          />
+        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-2 shadow-inner">
+          <BrandLogo logo={logo} alt={`${name} logo`} onFailed={() => setError(true)} />
         </div>
       ) : (
         <span className="relative font-display text-lg md:text-xl text-white drop-shadow-sm">
