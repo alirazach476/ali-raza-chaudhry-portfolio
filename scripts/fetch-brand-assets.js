@@ -13,12 +13,55 @@ fs.mkdirSync(logosDir, { recursive: true })
 fs.mkdirSync(avatarsDir, { recursive: true })
 
 const BRANDS = [
-  { slug: 'autozy', url: 'https://autozy.co' },
-  { slug: 'raahban', url: 'https://raahban.com' },
-  { slug: 'healthystart', url: 'https://healthystartnc.com' },
-  { slug: 'nyuton', url: 'https://nyutonenterprises.com' },
-  { slug: 'construction', url: 'https://constractioncompany.netlify.app' },
-  { slug: 'ethisol', url: 'https://ethisol.com' },
+  {
+    slug: 'autozy',
+    url: 'https://autozy.co',
+    direct: 'https://autozy.co/logo.png',
+    selectors: ['header img', 'nav img', '.navbar-brand img'],
+    maxWidth: 280,
+    maxHeight: 90,
+  },
+  {
+    slug: 'raahban',
+    url: 'https://raahban.com',
+    brandIcon: 'graduation-cap',
+    selectors: ['header a img', 'header img', 'nav a img', 'nav img'],
+    maxWidth: 220,
+    maxHeight: 72,
+  },
+  {
+    slug: 'healthystart',
+    url: 'https://healthystartnc.com',
+    direct: 'https://healthystartnc.com/assets/img/logo.png',
+    selectors: ['header img', 'nav img', '.logo img', '#logo img'],
+    maxWidth: 300,
+    maxHeight: 120,
+  },
+  {
+    slug: 'nyuton',
+    url: 'https://nyutonenterprises.com',
+    direct: 'https://nyutonenterprises.com/assets/img/logo.svg',
+    selectors: ['header img', 'nav img', '.logo img', 'img[alt*="nyuton" i]'],
+    maxWidth: 300,
+    maxHeight: 100,
+  },
+  {
+    slug: 'construction',
+    url: 'https://constractioncompany.netlify.app',
+    direct: 'https://constractioncompany.netlify.app/logo.svg',
+    selectors: ['header img', 'nav img', 'img[alt*="logo" i]', '.logo img'],
+    maxWidth: 240,
+    maxHeight: 90,
+  },
+  {
+    slug: 'ethisol',
+    url: 'https://ethisol.com',
+    direct:
+      'https://ethisol.com/wp-content/uploads/2023/05/Ethisol-Digital-Marketing-Firm-copy-1024x373.png',
+    selectors: ['header img', 'nav img', '.logo img'],
+    maxWidth: 280,
+    maxHeight: 100,
+  },
 ]
 
 const AVATARS = [
@@ -45,10 +88,13 @@ const LOGO_SELECTORS = [
   '.navbar-brand img',
   'header a > img',
   'nav a > img',
-  'header svg',
-  'nav svg',
+  'header picture img',
+  'nav picture img',
   '[class*="brand" i] img',
+  'img[alt*="logo" i]',
 ]
+
+const COMMON_LOGO_PATHS = ['/logo.png', '/logo.svg', '/images/logo.png', '/assets/logo.png', '/img/logo.png']
 
 async function downloadBuffer(url) {
   const res = await fetch(url, {
@@ -61,25 +107,81 @@ async function downloadBuffer(url) {
   return buf
 }
 
+async function normalizeBuffer(buffer) {
+  const sniff = buffer.subarray(0, 256).toString('utf8').toLowerCase()
+  if (sniff.includes('<svg') || sniff.includes('<?xml')) {
+    return sharp(buffer, { density: 320 }).png().toBuffer()
+  }
+  return buffer
+}
+
+async function isLogoSizedBuffer(buffer) {
+  try {
+    const meta = await sharp(buffer).metadata()
+    if (!meta.width || !meta.height) return false
+
+    const w = meta.width
+    const h = meta.height
+    const aspect = w / h
+    const area = w * h
+
+    if (w < 24 || h < 24) return false
+    if (w > 900 || h > 500) return false
+    if (w >= 500 && aspect >= 1.35) return false
+    if (h >= 350 && aspect <= 0.75) return false
+    if (area > 420000 && aspect > 1.15) return false
+
+    return true
+  } catch {
+    return false
+  }
+}
+
 async function saveLogo(buffer, outBase) {
   const pngPath = `${outBase}.png`
   const webpPath = `${outBase}.webp`
+  const normalized = await normalizeBuffer(buffer)
 
-  const pipeline = sharp(buffer)
-    .resize(256, 256, {
-      fit: 'contain',
-      background: { r: 255, g: 255, b: 255, alpha: 1 },
-    })
-    .flatten({ background: { r: 255, g: 255, b: 255 } })
-    .png()
+  if (!(await isLogoSizedBuffer(normalized))) {
+    throw new Error('Downloaded asset is not logo-sized (likely a hero/banner image)')
+  }
 
-  await pipeline.toFile(pngPath)
-  await sharp(pngPath).webp({ quality: 90 }).toFile(webpPath)
-  console.log(`  ✓ ${path.basename(webpPath)} (${fs.statSync(webpPath).size} bytes)`)
+  const meta = await sharp(normalized).metadata()
+  const hasAlpha = meta.hasAlpha
+
+  let pipeline = sharp(normalized).resize(512, 512, {
+    fit: 'contain',
+    background: { r: 255, g: 255, b: 255, alpha: 1 },
+    position: 'centre',
+  })
+
+  if (hasAlpha) {
+    pipeline = pipeline.flatten({ background: { r: 255, g: 255, b: 255 } })
+  } else {
+    pipeline = pipeline.flatten({ background: { r: 255, g: 255, b: 255 } })
+  }
+
+  await pipeline.png({ compressionLevel: 9, quality: 100 }).toFile(pngPath)
+  await sharp(pngPath).webp({ quality: 95, effort: 6 }).toFile(webpPath)
+  console.log(
+    `  ✓ ${path.basename(webpPath)} (webp ${fs.statSync(webpPath).size}b, png ${fs.statSync(pngPath).size}b)`
+  )
+}
+
+async function clearbitLogo(hostname) {
+  try {
+    const buf = await downloadBuffer(`https://logo.clearbit.com/${hostname}`)
+    if (buf.length > 1200 && (await isLogoSizedBuffer(buf))) return buf
+  } catch {
+    /* fallback */
+  }
+  return null
 }
 
 async function googleFavicon(hostname) {
-  return downloadBuffer(`https://www.google.com/s2/favicons?domain=${hostname}&sz=256`)
+  return downloadBuffer(
+    `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://${hostname}&size=256`
+  )
 }
 
 async function dismissOverlays(page, slug) {
@@ -88,40 +190,64 @@ async function dismissOverlays(page, slug) {
       document.getElementById('loadingScreen')?.remove()
       document.querySelectorAll('.loading-screen').forEach((el) => el.remove())
     })
-    await page.waitForTimeout(1000)
+    await page.waitForTimeout(1500)
   }
 }
 
-async function screenshotLogoElement(page) {
-  for (const selector of LOGO_SELECTORS) {
-    const locator = page.locator(selector).first()
-    try {
-      if ((await locator.count()) === 0) continue
-      if (!(await locator.isVisible())) continue
+async function screenshotLogoElement(page, brand) {
+  const selectors = [...new Set([...(brand.selectors ?? []), ...LOGO_SELECTORS])]
+  const maxW = brand.maxWidth ?? 320
+  const maxH = brand.maxHeight ?? 120
 
-      const box = await locator.boundingBox()
-      if (!box || box.width < 12 || box.height < 12) continue
-      if (box.width > 420 || box.height > 220) continue
+  let bestBuffer = null
+  let bestArea = Infinity
 
-      const buffer = await locator.screenshot({ type: 'png', omitBackground: true })
-      if (buffer.length > 400) return buffer
-    } catch {
-      /* try next selector */
+  for (const selector of selectors) {
+    const locators = page.locator(selector)
+    const count = await locators.count()
+
+    for (let i = 0; i < Math.min(count, 8); i++) {
+      const locator = locators.nth(i)
+      try {
+        if (!(await locator.isVisible())) continue
+
+        const box = await locator.boundingBox()
+        if (!box || box.width < 16 || box.height < 16) continue
+        if (box.width > maxW || box.height > maxH) continue
+
+        const area = box.width * box.height
+        if (area >= bestArea) continue
+
+        const buffer = await locator.screenshot({
+          type: 'png',
+          omitBackground: true,
+          scale: 'css',
+        })
+
+        if (buffer.length < 500) continue
+        if (!(await isLogoSizedBuffer(buffer))) continue
+
+        bestBuffer = buffer
+        bestArea = area
+      } catch {
+        /* try next */
+      }
     }
   }
-  return null
+
+  return bestBuffer
 }
 
-async function fetchMetaImage(page) {
+async function fetchIconMeta(page) {
   const urls = await page.evaluate(() => {
     const candidates = []
-    const og = document.querySelector('meta[property="og:image"]')?.getAttribute('content')
     const apple = document.querySelector('link[rel="apple-touch-icon"]')?.getAttribute('href')
-    const icons = Array.from(document.querySelectorAll('link[rel*="icon"]'))
+    const icons = Array.from(
+      document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]')
+    )
       .map((l) => l.getAttribute('href'))
       .filter(Boolean)
 
-    if (og) candidates.push(og)
     if (apple) candidates.push(apple)
     candidates.push(...icons)
     return candidates
@@ -130,8 +256,8 @@ async function fetchMetaImage(page) {
   for (const raw of urls) {
     try {
       const absolute = new URL(raw, page.url()).href
-      const buf = await downloadBuffer(absolute)
-      if (buf.length > 400) return buf
+      const buf = await normalizeBuffer(await downloadBuffer(absolute))
+      if (buf.length > 500 && (await isLogoSizedBuffer(buf))) return buf
     } catch {
       /* next */
     }
@@ -139,26 +265,101 @@ async function fetchMetaImage(page) {
   return null
 }
 
+async function fetchCommonLogoPaths(baseUrl) {
+  for (const logoPath of COMMON_LOGO_PATHS) {
+    try {
+      const buf = await normalizeBuffer(await downloadBuffer(new URL(logoPath, baseUrl).href))
+      if (buf.length > 500 && (await isLogoSizedBuffer(buf))) return buf
+    } catch {
+      /* next */
+    }
+  }
+  return null
+}
+
+async function fetchBrandIcon(page, brand) {
+  if (brand.brandIcon !== 'graduation-cap') return null
+
+  await page.evaluate(() => {
+    const source = document.querySelector('svg.lucide-graduation-cap')
+    if (!source) throw new Error('graduation cap icon not found')
+
+    document.body.innerHTML = ''
+    document.body.style.margin = '0'
+    document.body.style.background = '#ffffff'
+    document.body.style.display = 'grid'
+    document.body.style.placeItems = 'center'
+    document.body.style.height = '100vh'
+
+    const wrap = document.createElement('div')
+    wrap.style.width = '280px'
+    wrap.style.height = '280px'
+    wrap.style.display = 'grid'
+    wrap.style.placeItems = 'center'
+    wrap.style.borderRadius = '28px'
+    wrap.style.background = 'linear-gradient(135deg, #10b981 0%, #06b6d4 100%)'
+
+    const svg = source.cloneNode(true)
+    svg.setAttribute('width', '156')
+    svg.setAttribute('height', '156')
+    svg.style.color = '#ffffff'
+    svg.style.stroke = '#ffffff'
+    wrap.appendChild(svg)
+    document.body.appendChild(wrap)
+  })
+
+  return page.screenshot({ type: 'png' })
+}
+
 async function fetchLogoFromSite(page, brand) {
   const hostname = new URL(brand.url).hostname
+
+  if (brand.direct) {
+    try {
+      const direct = await normalizeBuffer(await downloadBuffer(brand.direct))
+      if (await isLogoSizedBuffer(direct)) return direct
+    } catch {
+      /* fall through */
+    }
+  }
 
   await page.goto(brand.url, { waitUntil: 'networkidle', timeout: 60000 })
   await page.waitForTimeout(2000)
   await dismissOverlays(page, brand.slug)
 
-  const screenshot = await screenshotLogoElement(page)
-  if (screenshot) return screenshot
+  if (brand.brandIcon) {
+    const branded = await fetchBrandIcon(page, brand)
+    if (branded) return branded
+  }
 
-  const metaImage = await fetchMetaImage(page)
-  if (metaImage) return metaImage
+  const sources = [
+    () => screenshotLogoElement(page, brand),
+    () => fetchIconMeta(page),
+    () => fetchCommonLogoPaths(brand.url),
+    () => clearbitLogo(hostname),
+    () => googleFavicon(hostname),
+  ]
 
-  return googleFavicon(hostname)
+  for (const source of sources) {
+    try {
+      const buffer = await source()
+      if (buffer) return buffer
+    } catch {
+      /* next source */
+    }
+  }
+
+  throw new Error('No logo source found')
 }
 
 async function fetchLogos() {
   console.log('Fetching brand logos...\n')
   const browser = await chromium.launch({ headless: true })
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    deviceScaleFactor: 2,
+  })
+  const page = await context.newPage()
 
   for (const brand of BRANDS) {
     try {

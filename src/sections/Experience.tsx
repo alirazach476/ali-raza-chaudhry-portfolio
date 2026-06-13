@@ -29,10 +29,11 @@ function CompanyBadge({
       style={{ boxShadow: `0 0 24px ${glow}` }}
     >
       {logo && !error ? (
-        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-1.5">
+        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-1.5 md:p-2">
           <BrandLogo
             logo={logo}
             alt={`${company} logo`}
+            className="w-full h-full max-w-[2.75rem] max-h-[2.75rem] md:max-w-[3.25rem] md:max-h-[3.25rem] object-contain"
             onFailed={() => setError(true)}
           />
         </div>

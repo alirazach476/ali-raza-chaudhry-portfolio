@@ -65,8 +65,13 @@ function TrustedLogoMark({
       style={{ boxShadow: `0 6px 24px ${glow}` }}
     >
       {logo && !error ? (
-        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-2 shadow-inner">
-          <BrandLogo logo={logo} alt={`${name} logo`} onFailed={() => setError(true)} />
+        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-2.5 md:p-3 shadow-inner">
+          <BrandLogo
+            logo={logo}
+            alt={`${name} logo`}
+            className="w-full h-full max-w-[4.5rem] max-h-[4.5rem] md:max-w-[5.5rem] md:max-h-[5.5rem] object-contain"
+            onFailed={() => setError(true)}
+          />
         </div>
       ) : (
         <span className="relative font-display text-lg md:text-xl text-white drop-shadow-sm">

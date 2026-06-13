@@ -10,7 +10,7 @@ interface BrandLogoProps {
 function logoCandidates(logo?: string) {
   if (!logo) return []
   const normalized = logo.replace(/\.(png|jpe?g|webp)$/i, '')
-  return [`${normalized}.webp`, `${normalized}.png`]
+  return [`${normalized}.png`, `${normalized}.webp`]
 }
 
 export function BrandLogo({
@@ -28,6 +28,8 @@ export function BrandLogo({
     <img
       src={candidates[index]}
       alt={alt}
+      width={256}
+      height={256}
       className={className}
       loading="lazy"
       decoding="async"
