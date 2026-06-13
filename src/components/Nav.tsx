@@ -79,8 +79,12 @@ export function Nav() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <AvailabilityBadge className="hidden xl:inline-flex" />
-            <ResumeButton variant="outline" className="!px-5 !py-2.5 !text-xs" label="Resume" />
+            <AvailabilityBadge className="hidden lg:inline-flex" />
+            <ResumeButton
+              variant="primary"
+              className="nav-resume-btn !px-5 !py-2.5 !text-xs !font-semibold"
+              label="Resume"
+            />
           </div>
 
           <button
@@ -102,8 +106,13 @@ export function Nav() {
 
       {mobileOpen && (
         <div className="nav-mobile-panel md:hidden mx-4 mt-2 glass rounded-2xl p-4">
-            <div className="mb-3">
-              <AvailabilityBadge />
+            <div className="mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <AvailabilityBadge className="w-full sm:w-auto justify-center" />
+              <ResumeButton
+                variant="primary"
+                className="nav-resume-btn w-full sm:w-auto !justify-center !px-5 !py-3 !text-xs"
+                label="Download Resume ↗"
+              />
             </div>
             {LINKS.map((link) => (
               <button
@@ -116,9 +125,6 @@ export function Nav() {
                 {link.label}
               </button>
             ))}
-            <div className="px-4 py-3">
-              <ResumeButton variant="ghost" className="!px-0" label="Download Resume ↗" />
-            </div>
           </div>
         )}
     </header>

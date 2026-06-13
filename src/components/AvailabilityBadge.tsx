@@ -5,13 +5,13 @@ export function AvailabilityBadge({ className = '' }: { className?: string }) {
 
   return (
     <div
-      className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-[10px] md:text-xs tracking-wide text-text-muted ${className}`}
+      className={`nav-availability-badge inline-flex items-center gap-2.5 px-4 py-2 rounded-full text-[11px] md:text-xs font-medium tracking-wide ${className}`}
     >
-      <span className="relative flex h-2 w-2">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+      <span className="nav-availability-dot relative flex h-2.5 w-2.5 shrink-0">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80" />
+        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]" />
       </span>
-      {AVAILABILITY.label}
+      <span className="nav-availability-text">{AVAILABILITY.label}</span>
     </div>
   )
 }
