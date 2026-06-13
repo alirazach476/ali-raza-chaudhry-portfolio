@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { scrollTo } from '../providers/SmoothScrollProvider'
+import { RESUME_URL } from './ResumeButton'
 import { PROFILE, SOCIALS } from '../data/content'
 import { CASE_STUDY_SLUGS, CASE_STUDIES } from '../data/caseStudies'
 
@@ -77,7 +78,7 @@ export function CommandPalette() {
       label: 'Download Resume',
       group: 'Actions',
       action: () => {
-        window.open('/Abdullah-Yaseen-Resume.pdf.pdf', '_blank')
+        window.open(RESUME_URL, '_blank', 'noopener,noreferrer')
         setOpen(false)
       },
     },

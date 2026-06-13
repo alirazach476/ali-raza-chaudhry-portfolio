@@ -1,13 +1,18 @@
-import { useRef, type ReactNode, type MouseEvent, type ButtonHTMLAttributes } from 'react'
+import { useRef, type ReactNode, type MouseEvent, type AnchorHTMLAttributes, type ButtonHTMLAttributes } from 'react'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
-interface MagneticButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>
+
+interface MagneticButtonProps extends ButtonProps {
   children: ReactNode
   strength?: number
   as?: 'button' | 'a'
   href?: string
   variant?: 'primary' | 'outline' | 'ghost'
 }
+
+type MagneticButtonAllProps = MagneticButtonProps & Partial<Pick<AnchorProps, 'target' | 'rel' | 'download'>>
 
 export function MagneticButton({
   children,
@@ -18,7 +23,7 @@ export function MagneticButton({
   className = '',
   onClick,
   ...props
-}: MagneticButtonProps) {
+}: MagneticButtonAllProps) {
   const ref = useRef<HTMLButtonElement & HTMLAnchorElement>(null)
   const reduced = useReducedMotion()
 
@@ -61,11 +66,12 @@ export function MagneticButton({
   }
 
   if (as === 'a' && href) {
+    const isExternal = href.startsWith('http')
     return (
       <a
         href={href}
-        target={href.startsWith('http') ? '_blank' : undefined}
-        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
         {...(sharedProps as object)}
       >
         {children}
