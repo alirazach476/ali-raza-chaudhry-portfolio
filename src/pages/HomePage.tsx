@@ -11,6 +11,9 @@ const Experience = lazy(() =>
 const Testimonials = lazy(() =>
   import('../sections/Testimonials').then((m) => ({ default: m.Testimonials }))
 )
+const Certificates = lazy(() =>
+  import('../sections/Certificates').then((m) => ({ default: m.Certificates }))
+)
 const Expertise = lazy(() =>
   import('../sections/Expertise').then((m) => ({ default: m.Expertise }))
 )
@@ -55,6 +58,11 @@ export function HomePage() {
       <DeferredSection>
         <Suspense fallback={<SectionFallback />}>
           <Experience />
+        </Suspense>
+      </DeferredSection>
+      <DeferredSection>
+        <Suspense fallback={<SectionFallback />}>
+          <Certificates />
         </Suspense>
       </DeferredSection>
       <DeferredSection>

@@ -32,6 +32,7 @@ export function CommandPalette() {
     { id: 'home', label: 'Go to Home', group: 'Navigation', action: () => goHome() },
     { id: 'about', label: 'About', group: 'Navigation', action: () => goHome('#about') },
     { id: 'experience', label: 'Experience', group: 'Navigation', action: () => goHome('#experience') },
+    { id: 'certificates', label: 'Certificates', group: 'Navigation', action: () => goHome('#certificates') },
     { id: 'work', label: 'Featured Work', group: 'Navigation', action: () => goHome('#projects') },
     { id: 'expertise', label: 'Expertise', group: 'Navigation', action: () => goHome('#expertise') },
     { id: 'services', label: 'Services', group: 'Navigation', action: () => goHome('#services') },
