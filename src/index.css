@@ -1905,53 +1905,68 @@ body {
   }
 }
 
-/* ── Mobile responsive overrides ── */
+/* ── Mobile hero: stacked flow layout (no overlap) ── */
 
 @media (max-width: 1023px) {
-  /* Portrait sits in the middle band — below name/pills, above stats/social */
-  .hero-photo-immersive {
-    top: clamp(8.5rem, 22vh, 10rem);
-    bottom: clamp(17.5rem, 46vh, 21rem);
-    height: auto;
-    align-items: flex-end;
+  .hero-immersive {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    gap: 0.85rem;
+    padding: 5.5rem 1.15rem 2.5rem;
+    min-height: 100svh;
+    min-height: 100dvh;
+    align-content: start;
+    position: relative;
+    overflow: hidden;
   }
 
-  .hero-photo-cutout--immersive {
+  .hero-scene-layer,
+  .hero-top-scrim,
+  .hero-immersive-vignette,
+  .hero-immersive-fade-bottom {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-scene-layer {
+    z-index: 0;
+  }
+
+  .hero-top-scrim {
+    z-index: 1;
     height: 100%;
-    max-height: clamp(220px, 36svh, 360px);
-    max-width: min(82vw, 380px);
-    object-position: bottom center;
-  }
-
-  .hero-photo-float {
-    animation: hero-photo-float-mobile 5.5s ease-in-out infinite;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.55) 18%,
+      rgba(0, 0, 0, 0.15) 45%,
+      rgba(0, 0, 0, 0.65) 82%,
+      #000 100%
+    );
   }
 
   .hero-immersive-vignette {
+    z-index: 2;
     background:
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.45) 12%, transparent 28%, transparent 58%, rgba(0, 0, 0, 0.75) 78%, rgba(0, 0, 0, 0.95) 100%),
-      radial-gradient(ellipse 90% 50% at 50% 42%, transparent 22%, rgba(0, 0, 0, 0.45) 100%);
+      radial-gradient(ellipse 90% 55% at 50% 38%, rgba(124, 58, 237, 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 40% at 50% 72%, rgba(34, 211, 238, 0.1) 0%, transparent 60%);
   }
 
   .hero-immersive-fade-bottom {
-    height: 42%;
+    z-index: 3;
+    height: 28%;
+    opacity: 0.85;
   }
 
   .hero-overlay {
-    align-items: stretch;
+    position: relative;
+    display: contents;
+    z-index: 10;
   }
 
-  /* Flatten columns so each block can be placed in top / spacer / bottom zones */
   .hero-overlay-inner {
-    position: relative;
-    display: grid;
-    grid-template-rows: auto auto minmax(10rem, 1fr) auto auto auto;
-    padding: 5.75rem 1rem 3.75rem;
-    gap: 0.5rem;
-    min-height: 100svh;
-    min-height: 100dvh;
-    align-content: stretch;
-    box-sizing: border-box;
+    display: contents;
   }
 
   .hero-overlay-left,
@@ -1959,116 +1974,223 @@ body {
     display: contents;
   }
 
+  .hero-overlay-inner::before,
+  .hero-overlay-inner::after {
+    display: none;
+  }
+
   .hero-full-name.hero-name-split {
     grid-row: 1;
-    margin-top: 0;
-    padding-top: 0.25rem;
+    margin: 0;
+    padding-top: 0.15rem;
+    text-align: center;
+    z-index: 10;
+  }
+
+  .hero-full-name.hero-name-split .first,
+  .hero-full-name.hero-name-split .last {
+    margin-inline: auto;
   }
 
   .hero-role-pills {
     grid-row: 2;
-    margin-top: 0.35rem;
-    margin-bottom: 0.25rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0.15rem 0 0.35rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .hero-role-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hero-role-pill {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    font-size: 0.58rem;
+    padding: 0.42rem 0.8rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-photo-immersive {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    grid-row: 3;
+    z-index: 10;
+    height: auto;
+    min-height: 0;
+    margin: 0.15rem 0 0.35rem;
+    padding: 0.75rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-photo-immersive::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    width: min(72vw, 280px);
+    height: 42%;
+    border-radius: 50%;
+    background: radial-gradient(
+      ellipse at 50% 60%,
+      rgba(124, 58, 237, 0.42) 0%,
+      rgba(34, 211, 238, 0.18) 45%,
+      transparent 72%
+    );
+    filter: blur(28px);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-photo-immersive::after {
+    content: '';
+    position: absolute;
+    inset: 0.5rem 8%;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(165deg, rgba(124, 58, 237, 0.08) 0%, rgba(34, 211, 238, 0.04) 100%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-photo-inner {
+    position: relative;
+    z-index: 1;
+    height: auto;
+    width: 100%;
+  }
+
+  .hero-photo-cutout--immersive {
+    height: clamp(220px, 52vw, 300px);
+    max-height: none;
+    max-width: min(68vw, 280px);
+    margin-inline: auto;
+    object-position: bottom center;
+    filter: drop-shadow(0 0 50px rgba(124, 58, 237, 0.4))
+      drop-shadow(0 18px 36px rgba(0, 0, 0, 0.55))
+      contrast(1.08) saturate(1.12);
+  }
+
+  .hero-photo-float {
+    animation: hero-photo-float-mobile 5.5s ease-in-out infinite;
   }
 
   .hero-stats {
     grid-row: 4;
-    align-self: end;
-    margin-top: 0.75rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 24rem;
+    margin-inline: auto;
     position: relative;
-    z-index: 22;
+    z-index: 10;
   }
 
-  .hero-social-rail {
-    grid-row: 5;
+  .hero-stat-pill {
     position: relative;
-    z-index: 22;
+    padding: 0.55rem 0.35rem;
+    align-items: center;
+    text-align: center;
+    border-radius: 0.85rem;
+    background: rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
   }
 
-  .hero-tagline-italic {
-    grid-row: 6;
-    display: none;
-  }
-
-  .hero-cta-row {
-    grid-row: 6;
-    margin-top: 0.25rem;
-  }
-
-  .hero-overlay-inner::before {
+  .hero-stat-pill::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: clamp(9rem, 26vh, 11.5rem);
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.97) 0%,
-      rgba(0, 0, 0, 0.72) 55%,
-      transparent 100%
-    );
-  }
-
-  .hero-overlay-inner::after {
-    content: '';
-    position: absolute;
-    inset: auto 0 0;
-    height: 48%;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.98) 0%,
-      rgba(0, 0, 0, 0.85) 38%,
-      rgba(0, 0, 0, 0.4) 68%,
-      transparent 100%
-    );
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 0.35rem;
-    width: 100%;
-    max-width: 22rem;
-    margin-inline: auto;
-  }
-
-  .hero-stat-pill {
-    padding: 0.4rem 0.3rem;
-    align-items: center;
-    text-align: center;
+    height: 2px;
+    background: var(--gradient-accent);
+    opacity: 0.85;
   }
 
   .hero-immersive .hero-stat-value {
-    font-size: 0.85rem;
+    font-size: 0.92rem;
   }
 
   .hero-immersive .hero-stat-label {
-    font-size: 0.48rem;
-    letter-spacing: 0.07em;
-    line-height: 1.2;
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    color: rgba(255, 255, 255, 0.58);
   }
 
   .hero-social-rail {
+    grid-row: 5;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
     width: 100%;
-    max-width: 20rem;
+    max-width: 22rem;
     margin-inline: auto;
-    gap: 0.4rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-immersive .hero-social-pill {
+    justify-content: center;
+    padding: 0.55rem 0.35rem;
+    font-size: 0.58rem;
+    border-radius: 0.85rem;
+    gap: 0.35rem;
+  }
+
+  .hero-social-pill-label {
+    display: none;
+  }
+
+  .hero-social-pill-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .hero-tagline-italic {
+    grid-row: 6;
+    display: block !important;
+    text-align: center;
+    margin: 0.15rem auto 0;
+    max-width: 16rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
+    z-index: 10;
   }
 
   .hero-cta-row {
-    flex-direction: column;
+    grid-row: 7;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem;
     width: 100%;
-    max-width: 18rem;
+    max-width: 20rem;
     margin-inline: auto;
+    z-index: 10;
   }
 
   .hero-cta-row > * {
-    width: 100%;
+    flex: 1 1 calc(50% - 0.3rem);
+    min-width: 7.5rem;
+    width: auto;
     justify-content: center;
   }
 
@@ -2077,7 +2199,13 @@ body {
   }
 
   .hero-scroll-cue {
-    bottom: 0.5rem;
+    position: relative;
+    grid-row: 8;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin: 0.35rem auto 0;
+    z-index: 10;
   }
 }
 
@@ -2087,37 +2215,23 @@ body {
     padding-block: 2rem;
   }
 
-  .hero-overlay-inner {
-    padding: 5.25rem 0.85rem 3.5rem;
-    grid-template-rows: auto auto minmax(8.5rem, 1fr) auto auto auto;
-  }
-
-  .hero-photo-immersive {
-    top: clamp(8rem, 20vh, 9.5rem);
-    bottom: clamp(16.5rem, 44vh, 19.5rem);
+  .hero-immersive {
+    padding: 5rem 0.9rem 2rem;
+    gap: 0.7rem;
   }
 
   .hero-photo-cutout--immersive {
-    max-height: clamp(200px, 32svh, 300px);
-    max-width: min(80vw, 340px);
-  }
-
-  .hero-full-name.hero-name-split {
-    margin-top: 0;
-  }
-
-  .hero-role-pills {
-    gap: 0.35rem;
-    margin-top: 0.35rem;
+    height: clamp(200px, 48vw, 260px);
+    max-width: min(64vw, 250px);
   }
 
   .hero-role-pill {
     font-size: 0.55rem;
-    padding: 0.35rem 0.55rem;
+    padding: 0.38rem 0.65rem;
   }
 
   .hero-immersive .hero-tagline-italic {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .experience-preview,
@@ -2158,92 +2272,57 @@ body {
   }
 
   .hero-photo-cutout--immersive {
-    max-height: clamp(180px, 30svh, 260px);
-    max-width: min(78vw, 300px);
-  }
-
-  .hero-photo-immersive {
-    bottom: clamp(15.5rem, 42vh, 18rem);
-  }
-
-  .hero-overlay-inner {
-    grid-template-rows: auto auto minmax(7rem, 1fr) auto auto auto;
-  }
-
-  .hero-social-rail {
-    display: grid;
-    grid-template-columns: 1fr;
-    max-width: 14rem;
-  }
-
-  .hero-social-pill {
-    width: 100%;
-    justify-content: center;
-    padding: 0.5rem 0.85rem;
-    font-size: 0.62rem;
-  }
-
-  .hero-stats {
-    max-width: 100%;
-  }
-
-  .hero-stat-pill {
-    padding: 0.35rem 0.2rem;
+    height: clamp(185px, 46vw, 230px);
+    max-width: min(62vw, 220px);
   }
 
   .hero-immersive .hero-stat-value {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
   }
 
   .hero-immersive .hero-stat-label {
-    font-size: 0.42rem;
+    font-size: 0.44rem;
+  }
+
+  .hero-stat-pill {
+    padding: 0.45rem 0.25rem;
   }
 }
 
-/* Short mobile viewports (e.g. iPhone SE) — tighten vertical rhythm */
+/* Short mobile viewports (e.g. iPhone SE) */
 @media (max-width: 1023px) and (max-height: 740px) {
-  .hero-photo-immersive {
-    top: clamp(7rem, 16vh, 8.5rem);
-    bottom: clamp(15.25rem, 42svh, 17.5rem);
+  .hero-immersive {
+    padding: 4.75rem 0.85rem 1.75rem;
+    gap: 0.55rem;
   }
 
   .hero-photo-cutout--immersive {
-    max-height: clamp(130px, 22svh, 185px);
-    max-width: min(68vw, 260px);
+    height: clamp(165px, 42vw, 200px);
+    max-width: min(58vw, 200px);
   }
 
-  .hero-role-pills {
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-stats {
-    margin-top: 1rem;
-  }
-
-  .hero-overlay-inner {
-    padding: 5rem 0.85rem 3rem;
-    gap: 0.35rem;
-    grid-template-rows: auto auto minmax(5.5rem, 1fr) auto auto auto;
+  .hero-photo-immersive {
+    padding: 0.35rem 0 0.25rem;
+    margin: 0;
   }
 
   .hero-role-pill {
     font-size: 0.5rem;
-    padding: 0.3rem 0.5rem;
-  }
-
-  .hero-social-rail {
-    margin-top: 0;
-    gap: 0.3rem;
+    padding: 0.32rem 0.55rem;
   }
 
   .hero-cta-row {
-    max-width: 16rem;
-    gap: 0.5rem;
+    max-width: 18rem;
+    gap: 0.45rem;
   }
 
   .hero-scroll-cue {
-    bottom: 0.35rem;
-    opacity: 0.65;
+    margin-top: 0.15rem;
+    opacity: 0.7;
     font-size: 0.58rem;
+  }
+
+  .hero-scroll-line {
+    height: 1.75rem;
   }
 }

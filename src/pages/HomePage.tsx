@@ -62,11 +62,6 @@ export function HomePage() {
       </DeferredSection>
       <DeferredSection>
         <Suspense fallback={<SectionFallback />}>
-          <Certificates />
-        </Suspense>
-      </DeferredSection>
-      <DeferredSection>
-        <Suspense fallback={<SectionFallback />}>
           <Testimonials />
         </Suspense>
       </DeferredSection>
@@ -78,6 +73,11 @@ export function HomePage() {
       <DeferredSection minHeight="60vh">
         <Suspense fallback={<SectionFallback height="60vh" />}>
           <Projects />
+        </Suspense>
+      </DeferredSection>
+      <DeferredSection>
+        <Suspense fallback={<SectionFallback />}>
+          <Certificates />
         </Suspense>
       </DeferredSection>
       <DeferredSection>
