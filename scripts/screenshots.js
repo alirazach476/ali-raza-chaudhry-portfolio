@@ -27,35 +27,35 @@ const sites = [
     },
   },
   { name: 'watches', url: 'https://watchs-gray.vercel.app', wait: 8000, until: 'domcontentloaded' },
-  { name: 'nova', url: 'https://core-seven-henna.vercel.app', wait: 8000, until: 'domcontentloaded' },
+  {
+    name: 'nova',
+    url: 'https://core-seven-henna.vercel.app',
+    wait: 5000,
+    until: 'load',
+    async prepare(page) {
+      try {
+        await page.waitForSelector('.app--ready', { timeout: 30000 })
+      } catch {
+        /* best-effort if ready class never appears */
+      }
+      await page.waitForTimeout(5000)
+      await page.evaluate(() => window.scrollTo(0, 0))
+    },
+  },
   {
     name: 'construction',
     url: 'https://constractioncompany.netlify.app',
-    wait: 6000,
+    wait: 4000,
     until: 'networkidle',
     async prepare(page) {
       try {
-        await page.waitForLoadState('networkidle', { timeout: 30000 })
-      } catch {
-        /* continue with best-effort capture */
-      }
-      await page.waitForTimeout(3000)
-      // Scroll to trigger lazy-loaded hero imagery, then return to top
-      await page.evaluate(async () => {
-        const step = () =>
-          new Promise((resolve) => {
-            window.scrollBy(0, 500)
-            setTimeout(resolve, 600)
-          })
-        for (let i = 0; i < 4; i++) await step()
-        window.scrollTo(0, 0)
-      })
-      await page.waitForTimeout(2500)
-      try {
-        await page.waitForSelector('img[src], [class*="hero"], main section', { timeout: 8000 })
+        await page.waitForSelector('img[src]', { timeout: 15000 })
       } catch {
         /* capture whatever rendered */
       }
+      await page.waitForTimeout(2000)
+      await page.evaluate(() => window.scrollTo(0, 0))
+      await page.waitForTimeout(1500)
     },
   },
   { name: 'steppingstone', url: 'https://stteppingstone.netlify.app', wait: 3000, until: 'networkidle' },

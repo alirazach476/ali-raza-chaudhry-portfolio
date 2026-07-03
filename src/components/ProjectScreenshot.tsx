@@ -18,6 +18,7 @@ function displayUrl(url: string) {
 
 export function ProjectScreenshot({ slug, name, url, gradient }: ProjectScreenshotProps) {
   const [imgError, setImgError] = useState(false)
+  const [usePngFallback, setUsePngFallback] = useState(false)
 
   if (imgError) {
     return (
@@ -40,17 +41,30 @@ export function ProjectScreenshot({ slug, name, url, gradient }: ProjectScreensh
         <div className="project-shot-url">{displayUrl(url)}</div>
       </div>
       <div className="project-shot-viewport">
-        <OptimizedImage
-          baseSrc={`/projects/${slug}`}
-          fallbackExt="png"
-          alt={`${name} live site preview`}
-          className="project-shot-image"
-          onError={() => setImgError(true)}
-          loading="lazy"
-          decoding="async"
-          width={1440}
-          height={900}
-        />
+        {usePngFallback ? (
+          <img
+            src={`/projects/${slug}.png`}
+            alt={`${name} live site preview`}
+            className="project-shot-image"
+            onError={() => setImgError(true)}
+            loading="lazy"
+            decoding="async"
+            width={1440}
+            height={900}
+          />
+        ) : (
+          <OptimizedImage
+            baseSrc={`/projects/${slug}`}
+            fallbackExt="png"
+            alt={`${name} live site preview`}
+            className="project-shot-image"
+            onError={() => setUsePngFallback(true)}
+            loading="lazy"
+            decoding="async"
+            width={1440}
+            height={900}
+          />
+        )}
         <div className="project-shot-shine" aria-hidden="true" />
         <div className="project-shot-vignette" aria-hidden="true" />
       </div>
