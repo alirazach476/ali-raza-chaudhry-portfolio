@@ -27,6 +27,7 @@ const sites = [
     },
   },
   { name: 'watches', url: 'https://watchs-gray.vercel.app', wait: 8000, until: 'domcontentloaded' },
+  { name: 'nova', url: 'https://core-seven-henna.vercel.app', wait: 8000, until: 'domcontentloaded' },
   {
     name: 'construction',
     url: 'https://constractioncompany.netlify.app',

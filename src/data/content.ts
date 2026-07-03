@@ -2,7 +2,7 @@ export const PROFILE = {
   email: 'abdullahyaseen6500@gmail.com',
   stats: [
     { label: 'Projects Shipped', value: 25, suffix: '+' },
-    { label: 'Live Sites', value: 7, suffix: '' },
+    { label: 'Live Sites', value: 8, suffix: '' },
     { label: 'AI Systems Built', value: 12, suffix: '+' },
   ],
   bio: `I'm a full-stack developer who doesn't stop at the browser. On one side, I craft pixel-perfect interfaces with React, Next.js, and modern CSS — sites that load fast, convert visitors, and feel premium. On the other, I build real-time AI and computer vision systems that detect, track, and recognize — from product scanning to license plate recognition, deployed and running in production.`,
@@ -86,6 +86,13 @@ export const WEB_PROJECTS = [
     gradient: 'from-violet/40 via-cyan/20 to-indigo/30',
   },
   {
+    name: 'NOVA Footwear (3D)',
+    slug: 'nova',
+    url: 'https://core-seven-henna.vercel.app',
+    tags: ['Three.js', 'React', '3D Animation'],
+    gradient: 'from-rose/30 via-violet/30 to-indigo/20',
+  },
+  {
     name: 'Construction Company',
     slug: 'construction',
     url: 'https://constractioncompany.netlify.app',
@@ -164,7 +171,7 @@ export const APPROACH = [
   },
   {
     title: 'REAL RESULTS.',
-    body: 'Seven live production sites. Measurable conversions. Fast load times. I ship work that clients can point to, not prototypes that never leave localhost.',
+    body: 'Eight live production sites. Measurable conversions. Fast load times. I ship work that clients can point to, not prototypes that never leave localhost.',
   },
   {
     title: 'AI THAT SHIPS.',

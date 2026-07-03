@@ -5,7 +5,7 @@ export const AVAILABILITY = {
 
 export const IMPACT_STATS = [
   { label: 'Projects Shipped', value: 25, suffix: '+' },
-  { label: 'Live Sites', value: 7, suffix: '' },
+  { label: 'Live Sites', value: 8, suffix: '' },
   { label: 'AI Systems Built', value: 12, suffix: '+' },
   { label: 'Happy Clients', value: 15, suffix: '+' },
 ]
