@@ -6,9 +6,9 @@ import { scrollTo } from '../providers/SmoothScrollProvider'
 import { useActiveSection } from '../hooks/useActiveSection'
 
 const LINKS = [
+  { label: 'Work', href: '#projects', id: 'projects' },
   { label: 'About', href: '#about', id: 'about' },
   { label: 'Experience', href: '#experience', id: 'experience' },
-  { label: 'Work', href: '#projects', id: 'projects' },
   { label: 'Certificates', href: '#certificates', id: 'certificates' },
   { label: 'Expertise', href: '#expertise', id: 'expertise' },
   { label: 'Services', href: '#services', id: 'services' },

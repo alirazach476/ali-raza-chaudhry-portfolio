@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionHeading } from '../components/SectionHeading'
-import { BrandLogo } from '../components/BrandLogo'
-import { TESTIMONIALS, TRUSTED_LOGOS } from '../data/socialProof'
+import { TESTIMONIALS } from '../data/socialProof'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -41,50 +40,8 @@ function TestimonialAvatar({
   )
 }
 
-function TrustedLogoMark({
-  logo,
-  initials,
-  name,
-  gradient,
-  glow,
-}: {
-  logo?: string
-  initials: string
-  name: string
-  gradient: string
-  glow: string
-}) {
-  const [error, setError] = useState(false)
-
-  return (
-    <div
-      className={`relative w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center overflow-hidden p-2.5
-        bg-gradient-to-br ${gradient}
-        transition-all duration-500 ease-out
-        group-hover:scale-105 group-hover:-translate-y-0.5`}
-      style={{ boxShadow: `0 6px 24px ${glow}` }}
-    >
-      {logo && !error ? (
-        <div className="w-full h-full rounded-lg bg-white flex items-center justify-center p-2.5 md:p-3 shadow-inner">
-          <BrandLogo
-            logo={logo}
-            alt={`${name} logo`}
-            className="w-full h-full max-w-[4.5rem] max-h-[4.5rem] md:max-w-[5.5rem] md:max-h-[5.5rem] object-contain"
-            onFailed={() => setError(true)}
-          />
-        </div>
-      ) : (
-        <span className="relative font-display text-lg md:text-xl text-white drop-shadow-sm">
-          {initials}
-        </span>
-      )}
-    </div>
-  )
-}
-
 export function Testimonials() {
   const gridRef = useRef<HTMLDivElement>(null)
-  const trustedRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
   const reduced = useReducedMotion()
 
@@ -100,24 +57,6 @@ export function Testimonials() {
         ease: 'power3.out',
         stagger: 0.08,
         scrollTrigger: { trigger: gridRef.current, start: 'top 85%', once: true },
-      }
-    )
-  }, [reduced])
-
-  useEffect(() => {
-    if (!trustedRef.current || reduced) return
-    const logos = trustedRef.current.querySelectorAll('.trusted-logo')
-    gsap.fromTo(
-      logos,
-      { opacity: 0, y: 20, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: 'power3.out',
-        stagger: 0.06,
-        scrollTrigger: { trigger: trustedRef.current, start: 'top 88%', once: true },
       }
     )
   }, [reduced])
@@ -168,47 +107,6 @@ export function Testimonials() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div ref={trustedRef} className="relative rounded-2xl overflow-hidden p-6 md:p-8 glass">
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                'linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(34,211,238,0.06) 100%)',
-            }}
-          />
-
-          <p className="relative text-[10px] tracking-[0.35em] uppercase text-cyan text-center mb-1 font-medium">
-            Trusted by / Worked with
-          </p>
-          <p className="relative text-text-muted text-sm text-center mb-6 max-w-md mx-auto">
-            Brands and teams I&apos;ve built for — live in production.
-          </p>
-
-          <div className="relative flex flex-wrap items-center justify-center gap-4 md:gap-6">
-            {TRUSTED_LOGOS.map((logo) => (
-              <a
-                key={logo.name}
-                href={logo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="trusted-logo group flex flex-col items-center gap-2 no-underline"
-                data-cursor-hover
-              >
-                <TrustedLogoMark
-                  logo={logo.logo}
-                  initials={logo.initials}
-                  name={logo.name}
-                  gradient={logo.gradient}
-                  glow={logo.glow}
-                />
-                <span className="text-[11px] md:text-xs font-medium text-text-muted group-hover:text-cyan transition-colors duration-300">
-                  {logo.name}
-                </span>
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </section>

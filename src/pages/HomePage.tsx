@@ -50,6 +50,11 @@ export function HomePage() {
   return (
     <>
       <Hero />
+      <DeferredSection minHeight="60vh">
+        <Suspense fallback={<SectionFallback height="60vh" />}>
+          <Projects />
+        </Suspense>
+      </DeferredSection>
       <DeferredSection minHeight="50vh">
         <Suspense fallback={<SectionFallback height="50vh" />}>
           <About />
@@ -68,11 +73,6 @@ export function HomePage() {
       <DeferredSection>
         <Suspense fallback={<SectionFallback />}>
           <Expertise />
-        </Suspense>
-      </DeferredSection>
-      <DeferredSection minHeight="60vh">
-        <Suspense fallback={<SectionFallback height="60vh" />}>
-          <Projects />
         </Suspense>
       </DeferredSection>
       <DeferredSection>
