@@ -8,6 +8,7 @@ import { SmoothScrollProvider } from './providers/SmoothScrollProvider'
 import { useScrollRefresh } from './hooks/useScrollRefresh'
 import { HomePage } from './pages/HomePage'
 import { NotFound } from './pages/NotFound'
+import { Analytics } from '@vercel/analytics/react'
 import { JsonLd } from './components/JsonLd'
 
 const CaseStudyPage = lazy(() =>
@@ -117,6 +118,7 @@ function App() {
     <BrowserRouter>
       <SmoothScrollProvider>
         <JsonLd />
+        <Analytics />
         <AppRoutes />
       </SmoothScrollProvider>
     </BrowserRouter>
