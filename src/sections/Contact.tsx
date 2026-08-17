@@ -83,13 +83,23 @@ export function Contact() {
 
       <div className="relative max-w-[1400px] mx-auto">
         <div className="text-center mb-6">
+          <p className="text-[10px] md:text-xs tracking-[0.3em] uppercase text-cyan font-medium mb-2">Contact</p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl gradient-text leading-tight mb-3">
             Let&apos;s build something.
           </h2>
 
           <p className="text-text-muted text-sm md:text-base mb-5 max-w-lg mx-auto">
-            Open to freelance & full-time opportunities. Let&apos;s talk about your next project — web, AI, or both.
+            Open to freelance &amp; full-time roles. Let&apos;s talk about your next SaaS, web app, or AI project.
           </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+            <a href={`mailto:${PROFILE.email}`} className="text-white/85 hover:text-cyan transition-colors" data-cursor-hover>
+              {PROFILE.email}
+            </a>
+            <a href={`tel:${PROFILE.phone.replace(/\s/g, '')}`} className="text-white/85 hover:text-cyan transition-colors" data-cursor-hover>
+              {PROFILE.phone}
+            </a>
+          </div>
         </div>
 
         <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-6 max-w-sm sm:max-w-none mx-auto">
@@ -122,7 +132,7 @@ export function Contact() {
           </div>
 
           <p className="mt-8 text-[10px] tracking-[0.2em] uppercase text-text-muted">
-            © {new Date().getFullYear()} Abdullah Yaseen · Built with React & Three.js
+            © {new Date().getFullYear()} Abdullah Yaseen · Built with React, Tailwind &amp; Framer Motion
           </p>
         </div>
       </div>

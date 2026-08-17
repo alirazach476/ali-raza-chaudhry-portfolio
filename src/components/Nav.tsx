@@ -7,12 +7,11 @@ import { useActiveSection } from '../hooks/useActiveSection'
 
 const LINKS = [
   { label: 'About', href: '#about', id: 'about' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
   { label: 'Experience', href: '#experience', id: 'experience' },
-  { label: 'Work', href: '#projects', id: 'projects' },
-  { label: 'Certificates', href: '#certificates', id: 'certificates' },
-  { label: 'Expertise', href: '#expertise', id: 'expertise' },
+  { label: 'Projects', href: '#projects', id: 'projects' },
+  { label: 'AI / CV', href: '#ai', id: 'ai' },
   { label: 'Services', href: '#services', id: 'services' },
-  { label: 'Stack', href: '#stack', id: 'stack' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ]
 

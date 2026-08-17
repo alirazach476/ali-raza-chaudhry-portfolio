@@ -5,29 +5,19 @@ import { DeferredSection } from '../components/DeferredSection'
 import { Hero } from '../sections/Hero'
 
 const About = lazy(() => import('../sections/About').then((m) => ({ default: m.About })))
+const Skills = lazy(() => import('../sections/Skills').then((m) => ({ default: m.Skills })))
 const Experience = lazy(() =>
   import('../sections/Experience').then((m) => ({ default: m.Experience }))
-)
-const Testimonials = lazy(() =>
-  import('../sections/Testimonials').then((m) => ({ default: m.Testimonials }))
-)
-const Certificates = lazy(() =>
-  import('../sections/Certificates').then((m) => ({ default: m.Certificates }))
-)
-const Expertise = lazy(() =>
-  import('../sections/Expertise').then((m) => ({ default: m.Expertise }))
 )
 const Projects = lazy(() =>
   import('../sections/Projects').then((m) => ({ default: m.Projects }))
 )
+const AI = lazy(() => import('../sections/AI').then((m) => ({ default: m.AI })))
 const Services = lazy(() =>
   import('../sections/Services').then((m) => ({ default: m.Services }))
 )
-const TechStack = lazy(() =>
-  import('../sections/TechStack').then((m) => ({ default: m.TechStack }))
-)
-const Approach = lazy(() =>
-  import('../sections/Approach').then((m) => ({ default: m.Approach }))
+const ResumeCTA = lazy(() =>
+  import('../sections/ResumeCTA').then((m) => ({ default: m.ResumeCTA }))
 )
 const Contact = lazy(() =>
   import('../sections/Contact').then((m) => ({ default: m.Contact }))
@@ -57,17 +47,12 @@ export function HomePage() {
       </DeferredSection>
       <DeferredSection>
         <Suspense fallback={<SectionFallback />}>
+          <Skills />
+        </Suspense>
+      </DeferredSection>
+      <DeferredSection>
+        <Suspense fallback={<SectionFallback />}>
           <Experience />
-        </Suspense>
-      </DeferredSection>
-      <DeferredSection>
-        <Suspense fallback={<SectionFallback />}>
-          <Testimonials />
-        </Suspense>
-      </DeferredSection>
-      <DeferredSection>
-        <Suspense fallback={<SectionFallback />}>
-          <Expertise />
         </Suspense>
       </DeferredSection>
       <DeferredSection minHeight="60vh">
@@ -77,7 +62,7 @@ export function HomePage() {
       </DeferredSection>
       <DeferredSection>
         <Suspense fallback={<SectionFallback />}>
-          <Certificates />
+          <AI />
         </Suspense>
       </DeferredSection>
       <DeferredSection>
@@ -87,12 +72,7 @@ export function HomePage() {
       </DeferredSection>
       <DeferredSection>
         <Suspense fallback={<SectionFallback />}>
-          <TechStack />
-        </Suspense>
-      </DeferredSection>
-      <DeferredSection>
-        <Suspense fallback={<SectionFallback />}>
-          <Approach />
+          <ResumeCTA />
         </Suspense>
       </DeferredSection>
       <DeferredSection minHeight="50vh">
