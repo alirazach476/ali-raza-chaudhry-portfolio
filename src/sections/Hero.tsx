@@ -1,11 +1,35 @@
-import { useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { HeroPhoto } from '../components/HeroPhoto'
-import { HeroBackground } from '../components/HeroBackground'
 import { MagneticButton } from '../components/MagneticButton'
 import { scrollTo } from '../providers/SmoothScrollProvider'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 import { SOCIALS as SOCIAL_URLS, PROFILE } from '../data/content'
+
+const HeroScene = lazy(() =>
+  import('../three/HeroScene').then((m) => ({ default: m.HeroScene }))
+)
+
+function HeroScenePlaceholder() {
+  return (
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          'radial-gradient(ellipse 70% 55% at 50% 42%, rgba(124,58,237,0.22) 0%, rgba(34,211,238,0.08) 45%, transparent 72%)',
+      }}
+      aria-hidden="true"
+    />
+  )
+}
+
+function shouldLoadHeroScene() {
+  if (typeof window === 'undefined') return false
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false
+  if (window.matchMedia('(max-width: 767px)').matches) return false
+  if (window.matchMedia('(pointer: coarse)').matches) return false
+  return true
+}
 
 const ROLE_PILLS = [
   {
@@ -16,14 +40,14 @@ const ROLE_PILLS = [
     glow: 'rgba(34, 211, 238, 0.2)',
   },
   {
-    label: 'AI / Python Engineer',
+    label: 'AI Engineer',
     gradient: 'from-pink/25 to-fuchsia/500/10',
     border: 'border-pink/40',
     text: 'text-pink-300',
     glow: 'rgba(244, 114, 182, 0.2)',
   },
   {
-    label: 'SaaS Builder',
+    label: 'Problem Solver',
     gradient: 'from-violet/25 to-indigo/500/10',
     border: 'border-violet/40',
     text: 'text-violet-300',
@@ -70,7 +94,7 @@ const NAME_PARTS = [
 ]
 
 const BIO_SNIPPET =
-  'I ship production-grade SaaS from idea to deploy — React, Next.js, Node, Python & AI automation. Founder of 2 launched SaaS · 30+ freelance projects · 5-star.'
+  'I build interfaces that convert and AI systems that see — from React & Next.js to YOLO & OpenCV, shipped and running in production.'
 
 const FULL_NAME = 'Abdullah Yaseen'
 
@@ -81,6 +105,35 @@ export function Hero() {
   const nameRef = useRef<HTMLHeadingElement>(null)
   const reduced = useReducedMotion()
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
+  const [enableScene, setEnableScene] = useState(false)
+
+  useEffect(() => {
+    if (reduced || !shouldLoadHeroScene()) return
+
+    let cancelled = false
+    const enable = () => {
+      if (!cancelled) setEnableScene(true)
+    }
+
+    const win = window as Window & {
+      requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number
+      cancelIdleCallback?: (id: number) => void
+    }
+
+    if (win.requestIdleCallback) {
+      const id = win.requestIdleCallback(enable, { timeout: 2500 })
+      return () => {
+        cancelled = true
+        win.cancelIdleCallback?.(id)
+      }
+    }
+
+    const timer = setTimeout(enable, 500)
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+  }, [reduced])
 
   useEffect(() => {
     if (reduced) return
@@ -140,9 +193,15 @@ export function Hero() {
 
   return (
     <section id="hero" className="hero-immersive" aria-label="Hero">
-      {/* CSS + Framer Motion cinematic background */}
-      <div className="hero-scene-layer">
-        <HeroBackground mouse={mouse} />
+      {/* Full-screen 3D background */}
+      <div className="hero-scene-layer" aria-hidden="true">
+        {enableScene ? (
+          <Suspense fallback={<HeroScenePlaceholder />}>
+            <HeroScene mouse={mouse} />
+          </Suspense>
+        ) : (
+          <HeroScenePlaceholder />
+        )}
       </div>
 
       {/* Full-hero portrait */}
@@ -220,17 +279,17 @@ export function Hero() {
 
           <div className="hero-overlay-right">
             <p className="hero-tagline-italic hero-reveal">
-              Production SaaS,
+              Interfaces that convert.
               <br />
-              <span className="hero-tagline-accent">idea to deploy.</span>
+              <span className="hero-tagline-accent">AI that sees.</span>
             </p>
 
             <div className="hero-cta-row hero-reveal">
-              <MagneticButton onClick={() => scrollTo('#contact')}>
-                Hire Me
+              <MagneticButton onClick={() => scrollTo('#projects')}>
+                View Work
               </MagneticButton>
-              <MagneticButton variant="outline" onClick={() => scrollTo('#projects')}>
-                View Projects
+              <MagneticButton variant="outline" onClick={() => scrollTo('#contact')}>
+                Contact
               </MagneticButton>
             </div>
           </div>

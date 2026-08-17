@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { scrollTo } from '../providers/SmoothScrollProvider'
 import { RESUME_URL } from './ResumeButton'
 import { PROFILE, SOCIALS } from '../data/content'
+import { CASE_STUDY_SLUGS, CASE_STUDIES } from '../data/caseStudies'
 
 interface Command {
   id: string
@@ -30,13 +31,22 @@ export function CommandPalette() {
   const commands: Command[] = [
     { id: 'home', label: 'Go to Home', group: 'Navigation', action: () => goHome() },
     { id: 'about', label: 'About', group: 'Navigation', action: () => goHome('#about') },
-    { id: 'skills', label: 'Skills', group: 'Navigation', action: () => goHome('#skills') },
     { id: 'experience', label: 'Experience', group: 'Navigation', action: () => goHome('#experience') },
-    { id: 'work', label: 'Featured Projects', group: 'Navigation', action: () => goHome('#projects') },
-    { id: 'ai', label: 'AI / Computer Vision', group: 'Navigation', action: () => goHome('#ai') },
+    { id: 'work', label: 'Featured Work', group: 'Navigation', action: () => goHome('#projects') },
+    { id: 'certificates', label: 'Certificates', group: 'Navigation', action: () => goHome('#certificates') },
+    { id: 'expertise', label: 'Expertise', group: 'Navigation', action: () => goHome('#expertise') },
     { id: 'services', label: 'Services', group: 'Navigation', action: () => goHome('#services') },
-    { id: 'resume', label: 'Resume', group: 'Navigation', action: () => goHome('#resume') },
+    { id: 'stack', label: 'Tech Stack', group: 'Navigation', action: () => goHome('#stack') },
     { id: 'contact', label: 'Contact', group: 'Navigation', action: () => goHome('#contact') },
+    ...CASE_STUDY_SLUGS.map((slug) => ({
+      id: `case-${slug}`,
+      label: `Case Study: ${CASE_STUDIES[slug].title}`,
+      group: 'Case Studies',
+      action: () => {
+        setOpen(false)
+        navigate(`/work/${slug}`)
+      },
+    })),
     {
       id: 'email',
       label: 'Copy Email',

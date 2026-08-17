@@ -10,6 +10,9 @@ import { HomePage } from './pages/HomePage'
 import { NotFound } from './pages/NotFound'
 import { JsonLd } from './components/JsonLd'
 
+const CaseStudyPage = lazy(() =>
+  import('./pages/CaseStudyPage').then((m) => ({ default: m.CaseStudyPage }))
+)
 const CustomCursor = lazy(() =>
   import('./components/CustomCursor').then((m) => ({ default: m.CustomCursor }))
 )
@@ -77,6 +80,18 @@ function AppRoutes() {
               <PageTransition>
                 <main>
                   <HomePage />
+                </main>
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/work/:slug"
+            element={
+              <PageTransition>
+                <main>
+                  <Suspense fallback={<div className="min-h-screen pt-28 px-6 animate-pulse" />}>
+                    <CaseStudyPage />
+                  </Suspense>
                 </main>
               </PageTransition>
             }

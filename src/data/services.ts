@@ -1,18 +1,18 @@
 export const SERVICES = [
   {
-    title: 'Full-Stack SaaS Development',
-    description: 'Production-grade web apps from idea to deploy — polished frontends, solid backends, and clean APIs.',
-    deliverables: ['React / Next.js frontends', 'Node.js & Python backends', 'REST API design', 'SQL / NoSQL databases'],
+    title: 'Web Development',
+    description: 'Premium interfaces that convert — landing pages, dashboards, and e-commerce experiences.',
+    deliverables: ['Responsive UI', 'Animations & micro-interactions', 'Performance optimization', 'SEO-ready markup'],
   },
   {
-    title: 'AI Automation & Integrations',
-    description: 'LLM-powered features, chatbots, and workflow automation that save time and drive real results.',
-    deliverables: ['LLM & chatbot integration', 'Workflow & lead-gen automation', 'Custom AI features', 'Third-party API integrations'],
+    title: 'Full-Stack MERN Apps',
+    description: 'End-to-end web applications with secure APIs, auth, and production deployments.',
+    deliverables: ['REST / GraphQL APIs', 'MongoDB architecture', 'JWT authentication', 'Deployment & CI'],
   },
   {
-    title: 'Computer Vision Systems',
-    description: 'Real-time Python vision pipelines that detect, track, and recognize from live camera feeds.',
-    deliverables: ['Object detection & tracking', 'OCR / license plate recognition', 'People & vehicle counting', 'Live camera integration'],
+    title: 'AI / Computer Vision',
+    description: 'Real-time detection, tracking, OCR, and custom ML pipelines that ship to production.',
+    deliverables: ['YOLO / OpenCV systems', 'Model training & tuning', 'Live camera integration', 'Performance profiling'],
   },
 ]
 
