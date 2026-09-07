@@ -275,7 +275,7 @@ export const APPROACH = [
 ]
 
 export const SOCIALS = {
-  linkedin: 'https://www.linkedin.com/in/ali-raza-chaudhry',
+  linkedin: 'https://www.linkedin.com/in/ali-raza-chaudhry-16a19a29b',
   github: 'https://github.com/alirazach476',
   whatsapp: 'https://wa.me/923226085459',
   whatsappDisplay: '+92 322 6085459',
