@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+*.log
+.DS_Store
+public/ai/_classify
+public/ai/_previews
+assets
+scripts
+src/assets
+*.md
+.env*

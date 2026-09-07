@@ -17,6 +17,29 @@ export function AICardMedia({ name, slug, image, video }: AICardMediaProps) {
 
   const imageBase = (image ?? `/ai/${slug}`).replace(/\.(png|jpe?g|webp)$/i, '')
 
+  // Prefer demo video when available
+  if (video && !videoError) {
+    return (
+      <div className="relative w-full aspect-video overflow-hidden bg-black">
+        <video
+          src={video}
+          poster={image?.replace(/\.(png|jpe?g|webp)$/i, '.jpg') ?? `/ai/${slug}.jpg`}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover"
+          onError={() => setVideoError(true)}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-base/50 via-transparent to-transparent pointer-events-none" />
+        <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-[9px] uppercase tracking-wider font-mono text-cyan border border-cyan/30 bg-base/60">
+          Live demo
+        </span>
+      </div>
+    )
+  }
+
   if (!imgError) {
     return (
       <div className="relative w-full aspect-video overflow-hidden">
@@ -52,20 +75,6 @@ export function AICardMedia({ name, slug, image, video }: AICardMediaProps) {
           />
         )}
       </div>
-    )
-  }
-
-  if (video && !videoError) {
-    return (
-      <video
-        src={video}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="w-full aspect-video object-cover"
-        onError={() => setVideoError(true)}
-      />
     )
   }
 

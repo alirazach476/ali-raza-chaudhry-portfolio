@@ -18,9 +18,9 @@ export function CaseStudyPage() {
 
   useEffect(() => {
     if (!study) return
-    document.title = `${study.title} — Abdullah Yaseen`
+    document.title = `${study.title} — Ali Raza Chaudhry`
     return () => {
-      document.title = 'Abdullah Yaseen — Full-Stack Developer & AI Engineer'
+      document.title = 'Ali Raza Chaudhry — AI/ML Engineer & Computer Vision'
     }
   }, [study])
 

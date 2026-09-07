@@ -6,27 +6,27 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '..')
 
 const candidates = [
-  path.join(rootDir, 'assets', 'abdullah-original.jpg'),
-  path.join(rootDir, 'assets', 'abdullah-original.jpeg'),
-  path.join(rootDir, 'src', 'assets', 'abdullah-original.jpg'),
-  path.join(rootDir, 'src', 'assets', 'abdullah-original.jpg.jpeg'),
-  path.join(rootDir, 'src', 'assets', 'abdullah-original.jpeg'),
+  path.join(rootDir, 'assets', 'ali-original.jpg'),
+  path.join(rootDir, 'assets', 'ali-original.jpeg'),
+  path.join(rootDir, 'src', 'assets', 'ali-original.jpg'),
+  path.join(rootDir, 'src', 'assets', 'ali-original.jpg.jpeg'),
+  path.join(rootDir, 'src', 'assets', 'ali-original.jpeg'),
 ]
 const input = candidates.find((p) => fs.existsSync(p))
-const output = path.join(rootDir, 'public', 'abdullah.png')
+const output = path.join(rootDir, 'public', 'ali.png')
 
 const REMBG_FALLBACK = `
 ⚠ Background removal failed. Try the Python fallback:
 
   pip install rembg onnxruntime
-  rembg i assets/abdullah-original.jpg public/abdullah.png
+  rembg i assets/ali-original.jpg public/ali.png
 
 Then re-run: npm run cutout
 `
 
 if (!input) {
   console.warn(
-    '⚠ No photo found — add abdullah-original.jpg to assets/ or src/assets/, then re-run.\n' +
+    '⚠ No photo found — add ali-original.jpg to assets/ or src/assets/, then re-run.\n' +
       '   Skipping cutout step.'
   )
   process.exit(0)
@@ -72,7 +72,7 @@ try {
 
   fs.mkdirSync(path.dirname(output), { recursive: true })
   fs.writeFileSync(output, buffer)
-  console.log('✓ cutout saved to public/abdullah.png')
+  console.log('✓ cutout saved to public/ali.png')
 } catch (e) {
   const message = e instanceof Error ? e.message : String(e)
   console.error(`\n✗ Cutout failed: ${message}`)

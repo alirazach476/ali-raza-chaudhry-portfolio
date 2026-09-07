@@ -4,7 +4,7 @@ import { OptimizedImage } from './OptimizedImage'
 import { useMouseParallax } from '../hooks/useMouseParallax'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
-const PHOTO_BASE = '/abdullah'
+const PHOTO_BASE = '/ali'
 
 interface HeroPhotoProps {
   immersive?: boolean
@@ -48,7 +48,7 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
     return (
       <div ref={containerRef} className={stageClass} style={parallaxStyle}>
         <div className="glass rounded-2xl p-8 text-center text-sm text-text-muted z-30">
-          Hero photo missing. Add <code className="text-cyan">public/abdullah.webp</code> or run{' '}
+          Hero photo missing. Add <code className="text-cyan">public/ali.webp</code> or run{' '}
           <code className="text-cyan">npm run cutout</code>.
         </div>
       </div>
@@ -73,7 +73,7 @@ export function HeroPhoto({ immersive = false }: HeroPhotoProps) {
           ref={imgRef}
           baseSrc={PHOTO_BASE}
           fallbackExt="png"
-          alt="Abdullah Yaseen — Full-Stack Developer & AI Engineer"
+          alt="Ali Raza Chaudhry — AI/ML Engineer & Computer Vision Engineer"
           width={1000}
           height={1300}
           fetchPriority="high"

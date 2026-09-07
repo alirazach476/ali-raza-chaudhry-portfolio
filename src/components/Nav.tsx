@@ -55,7 +55,7 @@ export function Nav() {
             className="font-display text-sm tracking-wider gradient-text focus:outline-none focus-visible:ring-2 focus-visible:ring-violet/50 rounded"
             data-cursor-hover
           >
-            AY
+            ARC
           </Link>
 
           <div className="hidden lg:flex items-center gap-1">

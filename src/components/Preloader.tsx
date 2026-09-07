@@ -88,7 +88,7 @@ export function Preloader({ onComplete }: PreloaderProps) {
           ref={nameRef}
           className="mt-8 font-display text-lg md:text-xl tracking-[0.3em] text-text-muted opacity-0 translate-y-4"
         >
-          ABDULLAH YASEEN
+          ALI RAZA CHAUDHRY
         </div>
       </div>
       <div

@@ -89,14 +89,14 @@ const SOCIAL_LINKS = [
 ]
 
 const NAME_PARTS = [
-  { text: 'Abdullah', variant: 'gradient' as const },
-  { text: 'Yaseen', variant: 'white' as const },
+  { text: 'Ali Raza', variant: 'gradient' as const },
+  { text: 'Chaudhry', variant: 'white' as const },
 ]
 
 const BIO_SNIPPET =
-  'I build interfaces that convert and AI systems that see — from React & Next.js to YOLO & OpenCV, shipped and running in production.'
+  'I build computer vision systems, generative AI agents, and full-stack products — from YOLO & OpenCV to LangChain, FastAPI, React & Next.js.'
 
-const FULL_NAME = 'Abdullah Yaseen'
+const FULL_NAME = 'Ali Raza Chaudhry'
 
 export function Hero() {
   const contentRef = useRef<HTMLDivElement>(null)

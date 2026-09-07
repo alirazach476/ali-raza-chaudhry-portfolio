@@ -1,51 +1,55 @@
 export const PROFILE = {
-  email: 'abdullahyaseen6500@gmail.com',
+  email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shipped', value: 25, suffix: '+' },
-    { label: 'Live Sites', value: 8, suffix: '' },
-    { label: 'AI Systems Built', value: 12, suffix: '+' },
+    { label: 'Projects Shipped', value: 40, suffix: '+' },
+    { label: 'Live Sites', value: 15, suffix: '+' },
+    { label: 'AI Systems Built', value: 20, suffix: '+' },
   ],
-  bio: `I'm a full-stack developer who doesn't stop at the browser. On one side, I craft pixel-perfect interfaces with React, Next.js, and modern CSS — sites that load fast, convert visitors, and feel premium. On the other, I build real-time AI and computer vision systems that detect, track, and recognize — from product scanning to license plate recognition, deployed and running in production.`,
+  bio: `I'm an AI/ML Engineer and Data Scientist who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished full-stack products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js, shipping production-ready AI with measurable business impact.`,
   skills: [
+    { name: 'Python / FastAPI', category: 'Backend' },
     { name: 'React / Next.js', category: 'Frontend' },
     { name: 'TypeScript', category: 'Frontend' },
     { name: 'Tailwind CSS', category: 'Frontend' },
     { name: 'Node.js / Express', category: 'Backend' },
-    { name: 'MongoDB', category: 'Backend' },
-    { name: 'Python', category: 'AI' },
     { name: 'YOLO / OpenCV', category: 'AI' },
-    { name: 'TensorFlow', category: 'AI' },
-    { name: 'Real-Time Inference', category: 'AI' },
-    { name: 'REST APIs', category: 'Backend' },
-    { name: 'Three.js', category: 'Frontend' },
-    { name: 'Docker', category: 'Tools' },
+    { name: 'PyTorch / TensorFlow', category: 'AI' },
+    { name: 'LangChain / LangGraph', category: 'AI' },
+    { name: 'RAG / AI Agents', category: 'AI' },
+    { name: 'SQL / PostgreSQL', category: 'Backend' },
+    { name: 'MediaPipe', category: 'AI' },
+    { name: 'Docker / AWS', category: 'Tools' },
   ],
 }
 
 export const EXPERTISE = [
   {
     id: '01',
-    title: 'Frontend Development',
-    description: 'Crafting responsive, animated interfaces that feel alive — from landing pages to complex dashboards.',
-    tags: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Framer Motion'],
+    title: 'Computer Vision',
+    description:
+      'Real-time detection, tracking, pose estimation, OCR, and recognition systems processing live video at production scale.',
+    tags: ['YOLO', 'OpenCV', 'MediaPipe', 'ALPR', 'Tracking'],
   },
   {
     id: '02',
-    title: 'Full-Stack MERN',
-    description: 'End-to-end web applications with secure auth, REST APIs, and production-grade deployments.',
-    tags: ['MongoDB', 'Express', 'React', 'Node', 'REST APIs', 'Auth'],
+    title: 'AI / ML & Generative AI',
+    description:
+      'Training, evaluating, and deploying models — plus LLM agents, RAG pipelines, and LangGraph workflows that ship.',
+    tags: ['PyTorch', 'TensorFlow', 'LangChain', 'LangGraph', 'RAG'],
   },
   {
     id: '03',
-    title: 'AI & Machine Learning',
-    description: 'Training and deploying models for real-world inference — from data pipelines to production APIs.',
-    tags: ['Python', 'TensorFlow', 'Model Training', 'Real-Time Inference'],
+    title: 'Full-Stack Development',
+    description:
+      'End-to-end web products with secure APIs, polished UI, and production deployments across React, Next.js, and FastAPI.',
+    tags: ['React', 'Next.js', 'FastAPI', 'Node.js', 'REST APIs'],
   },
   {
     id: '04',
-    title: 'Computer Vision',
-    description: 'Real-time detection, tracking, and recognition systems that process live video feeds at scale.',
-    tags: ['YOLO', 'OpenCV', 'Object Detection', 'ALPR', 'Tracking'],
+    title: 'Data Science & Analytics',
+    description:
+      'EDA, statistical modeling, Bayesian analysis, time series forecasting, and dashboards that drive decisions.',
+    tags: ['Pandas', 'Scikit-learn', 'R', 'Power BI', 'Tableau'],
   },
 ]
 
@@ -67,18 +71,18 @@ export const FEATURED_PROJECTS = [
     accent: 'rgba(124, 58, 237, 0.4)',
   },
   {
-    name: 'RaahBaan',
-    slug: 'raahban',
-    url: 'https://raahban.com',
-    tagline: 'AI education & career guidance for Pakistan',
+    name: 'Smart Vehicle Gate Access',
+    slug: 'alpr',
+    url: 'https://automated-gate-access.vercel.app',
+    tagline: 'LPD + VMMR automated gate access (FYP)',
     description:
-      'A full guidance platform: merit calculator, scholarship & university explorer, study planner, past papers, mock tests, a career simulator, and an AI counselor plus tutor.',
+      'License-plate detection and vehicle make/model recognition for automated gate access — engineered for reliable all-weather performance.',
     features: [
-      'Merit calculator & university / scholarship explorer',
-      'Study planner, past papers & mock tests',
-      'AI counselor, tutor & career simulator',
+      'License plate detection & OCR pipeline',
+      'Vehicle make/model recognition (VMMR)',
+      'Production web dashboard for access control',
     ],
-    tags: ['Next.js', 'React', 'Node.js', 'Supabase', 'LLM'],
+    tags: ['YOLO', 'OpenCV', 'OCR', 'React'],
     gradient: 'from-indigo/40 via-violet/30 to-pink/20',
     accent: 'rgba(34, 211, 238, 0.4)',
   },
@@ -86,130 +90,193 @@ export const FEATURED_PROJECTS = [
 
 export const WEB_PROJECTS = [
   {
-    name: 'Autozy',
-    slug: 'autozy',
-    url: 'https://autozy.co',
-    tags: ['React', 'Next.js', 'Tailwind'],
+    name: 'Crown and Dial',
+    slug: 'crown',
+    url: 'https://crown-and-dial.netlify.app',
+    tags: ['React', 'E-commerce', 'Netlify'],
     gradient: 'from-violet/40 via-indigo/30 to-cyan/20',
   },
   {
     name: 'Healthy Start NC',
     slug: 'healthystartnc',
     url: 'https://healthystartnc.com',
-    tags: ['WordPress', 'React', 'CSS'],
+    tags: ['WordPress', 'PHP', 'CSS'],
     gradient: 'from-cyan/30 via-indigo/30 to-violet/20',
   },
   {
     name: 'Nyuton Enterprises',
     slug: 'nyuton',
     url: 'https://nyutonenterprises.com',
-    tags: ['React', 'Tailwind', 'Vite'],
+    tags: ['WordPress', 'PHP'],
     gradient: 'from-amber/20 via-violet/30 to-indigo/20',
   },
   {
     name: 'Watches Store (3D)',
     slug: 'watches',
     url: 'https://watchs-gray.vercel.app',
-    tags: ['Three.js', 'React', 'E-commerce'],
+    tags: ['Three.js', 'React', 'Next.js'],
     gradient: 'from-violet/40 via-cyan/20 to-indigo/30',
   },
   {
-    name: 'NOVA Footwear (3D)',
-    slug: 'nova',
-    url: 'https://core-seven-henna.vercel.app',
-    tags: ['Three.js', 'React', '3D Animation'],
-    gradient: 'from-rose/30 via-violet/30 to-indigo/20',
-  },
-  {
-    name: 'Construction Company',
+    name: 'Fine Crafted Structures',
     slug: 'construction',
     url: 'https://constractioncompany.netlify.app',
-    tags: ['React', 'Tailwind', 'Netlify'],
+    tags: ['Next.js', 'React', 'Netlify'],
     gradient: 'from-indigo/30 via-violet/30 to-cyan/20',
   },
   {
-    name: 'Stepping Stone',
+    name: 'Stepping Stones CRI',
     slug: 'steppingstone',
-    url: 'https://stteppingstone.netlify.app',
+    url: 'https://steppingstoness.netlify.app',
     tags: ['React', 'CSS', 'Netlify'],
     gradient: 'from-pink/20 via-violet/30 to-indigo/20',
+  },
+  {
+    name: 'FamLink',
+    slug: 'famlink',
+    url: 'https://famlink.care',
+    tags: ['React', 'Full-Stack'],
+    gradient: 'from-cyan/30 via-violet/20 to-indigo/30',
+  },
+  {
+    name: 'NFT Marketplace',
+    slug: 'nft',
+    url: 'https://nftmarketplaece.netlify.app',
+    tags: ['React', 'Web3 UI'],
+    gradient: 'from-violet/30 via-pink/20 to-indigo/20',
+  },
+  {
+    name: 'Revara Real Estate',
+    slug: 'revara',
+    url: 'https://hotel-web-chi-tan.vercel.app',
+    tags: ['Next.js', 'React'],
+    gradient: 'from-indigo/30 via-cyan/20 to-violet/20',
   },
 ]
 
 export const AI_PROJECTS = [
   {
-    name: 'Automatic Product Scanning & Billing',
-    slug: 'product-scanning',
-    description: 'Real-time product detection and automated billing from live camera feed.',
-    tags: ['YOLO', 'OpenCV', 'Python', 'Real-Time'],
-    image: '/ai/product-scanning.jpg',
-    video: '/ai/product-scanning.mp4',
+    name: 'AI Baseball Swing Analyzer',
+    slug: 'baseball',
+    description:
+      'Pose estimation for pitcher & batter, swing-phase detection, mound/strike-zone tracking, and biomechanics scoring dashboard.',
+    tags: ['MediaPipe', 'YOLO', 'Pose', 'Streamlit'],
+    image: '/ai/baseball.jpg',
+    video: '/ai/baseball.mp4',
   },
   {
-    name: 'Real-Time Multi-Person Tracking',
+    name: 'Cricket Match Analytics',
+    slug: 'cricket',
+    description:
+      'YOLOv8 + OpenCV player/ball detection, pitch mapping, ball-speed analytics, and live field map overlays on broadcast footage.',
+    tags: ['YOLOv8', 'OpenCV', 'Analytics'],
+    image: '/ai/cricket.jpg',
+    video: '/ai/cricket.mp4',
+  },
+  {
+    name: 'Smart Football Analysis',
+    slug: 'football',
+    description:
+      'Player/ball tracking, team classification, bird’s-eye minimap, and real-time speed/sprint estimation on match footage.',
+    tags: ['YOLO', 'Tracking', 'Sports AI'],
+    image: '/ai/football.jpg',
+    video: '/ai/football.mp4',
+  },
+  {
+    name: 'AI Golf Skeleton & Swing',
+    slug: 'golf',
+    description:
+      'MediaPipe pose skeleton (30+ FPS), posture reference lines, and ball tracking for golf swing coaching feedback.',
+    tags: ['MediaPipe', 'Pose', 'FastAPI'],
+    image: '/ai/golf.jpg',
+    video: '/ai/golf.mp4',
+  },
+  {
+    name: 'License Plate + VMMR Gate Access',
+    slug: 'alpr',
+    description:
+      'Automatic vehicle recognition with license-plate OCR, make/model classification, and weather-aware detection (AVRS).',
+    tags: ['YOLO', 'OCR', 'ALPR', 'VMMR'],
+    image: '/ai/alpr.jpg',
+    video: '/ai/alpr.mp4',
+  },
+  {
+    name: 'Vehicle Damage & Billing',
+    slug: 'vehicle-damage',
+    description:
+      'Upload a vehicle photo, run damage detection, and generate an invoice in the Ali Vehicle Repair House billing app.',
+    tags: ['YOLO', 'ONNX', 'Billing'],
+    image: '/ai/vehicle-damage.jpg',
+    video: '/ai/vehicle-damage.mp4',
+  },
+  {
+    name: 'Medicine Detection & Pharmacy Billing',
+    slug: 'medicine',
+    description:
+      'YOLOv11 medicine-box detection with live class counts for smart pharmacy / billing workflows.',
+    tags: ['YOLOv11', 'Detection', 'Billing'],
+    image: '/ai/medicine.jpg',
+    video: '/ai/medicine.mp4',
+  },
+  {
+    name: 'Mechanical Tools Detection',
+    slug: 'mechanical-tools',
+    description:
+      'Real-time detection of hammers, wrenches, pliers, screwdrivers, and drills with confidence and size metrics.',
+    tags: ['YOLO', 'OpenCV', 'Detection'],
+    image: '/ai/mechanical-tools.jpg',
+    video: '/ai/mechanical-tools.mp4',
+  },
+  {
+    name: 'Multi-Person Tracking',
     slug: 'tracking',
-    description: 'Persistent ID tracking across multiple people in crowded scenes.',
-    tags: ['YOLO', 'DeepSORT', 'Python', 'Real-Time'],
+    description:
+      'Persistent ID tracking across multiple people with trajectory trails for crowded outdoor scenes.',
+    tags: ['YOLOv8', 'DeepSORT', 'Real-Time'],
     image: '/ai/tracking.jpg',
     video: '/ai/tracking.mp4',
   },
   {
-    name: 'Automatic Vehicle Counting',
-    slug: 'vehicle-counting',
-    description: 'Lane-aware vehicle detection and counting for traffic analytics.',
-    tags: ['YOLO', 'OpenCV', 'Python', 'Analytics'],
-    image: '/ai/vehicle-counting.jpg',
-    video: '/ai/vehicle-counting.mp4',
-  },
-  {
-    name: 'Real-Time People Detection',
-    slug: 'people-detection',
-    description: 'High-FPS person detection with bounding boxes on live streams.',
-    tags: ['YOLO', 'OpenCV', 'Python', 'Real-Time'],
-    image: '/ai/people-detection.jpg',
-    video: '/ai/people-detection.mp4',
-  },
-  {
-    name: 'License Plate Recognition (ALPR)',
-    slug: 'alpr',
-    description: 'End-to-end plate detection, OCR, and validation pipeline.',
-    tags: ['YOLO', 'OCR', 'OpenCV', 'ALPR'],
-    image: '/ai/alpr.jpg',
-    video: '/ai/alpr.mp4',
+    name: 'Driver Safety Detection',
+    slug: 'driver-safety',
+    description:
+      'In-cabin computer vision for seatbelt worn status and phone-usage distraction detection.',
+    tags: ['YOLO', 'OpenCV', 'Safety'],
+    image: '/ai/driver-safety.jpg',
+    video: '/ai/driver-safety.mp4',
   },
 ]
 
 export const TECH_STACK = {
-  Frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Three.js', 'Framer Motion', 'GSAP'],
-  Backend: ['Node.js', 'Express', 'MongoDB', 'REST APIs', 'JWT Auth', 'WebSockets'],
-  'AI & ML': ['Python', 'YOLO', 'OpenCV', 'TensorFlow', 'PyTorch', 'Real-Time Inference'],
-  'Tools & Deploy': ['Git', 'Docker', 'Vercel', 'Netlify', 'Linux', 'VS Code'],
+  Frontend: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Three.js', 'GSAP'],
+  Backend: ['Python', 'FastAPI', 'Node.js', 'Express', 'REST APIs', 'PostgreSQL', 'MongoDB'],
+  'AI & ML': ['YOLO', 'OpenCV', 'MediaPipe', 'PyTorch', 'TensorFlow', 'LangChain', 'LangGraph', 'RAG'],
+  'Tools & Deploy': ['Git', 'Docker', 'AWS', 'Vercel', 'Netlify', 'Linux', 'VS Code'],
 }
 
 export const MARQUEE_KEYWORDS = [
-  'React', 'TypeScript', 'YOLO', 'OpenCV', 'Three.js', 'Node.js', 'Python',
-  'Next.js', 'TensorFlow', 'MongoDB', 'GSAP', 'Computer Vision', 'Tailwind',
-  'Real-Time', 'ALPR', 'Docker', 'Vercel',
+  'Python', 'YOLO', 'OpenCV', 'PyTorch', 'TensorFlow', 'LangChain', 'LangGraph', 'RAG',
+  'React', 'Next.js', 'FastAPI', 'MediaPipe', 'Computer Vision', 'AI Agents', 'Docker', 'AWS',
 ]
 
 export const APPROACH = [
   {
-    title: 'PIXEL PERFECT.',
-    body: 'Every margin, animation curve, and breakpoint is intentional. I build interfaces that feel crafted — not generated — because details are what separate good sites from unforgettable ones.',
+    title: 'VISION THAT SHIPS.',
+    body: 'Computer vision isn\'t a demo for me — it\'s production systems: detection, tracking, OCR, pose, and billing pipelines running on real camera feeds.',
   },
   {
-    title: 'REAL RESULTS.',
-    body: 'Eight live production sites. Measurable conversions. Fast load times. I ship work that clients can point to, not prototypes that never leave localhost.',
+    title: 'AGENTS THAT REASON.',
+    body: 'I build LLM agents and RAG systems with LangChain and LangGraph — tool use, critique loops, multi-agent workflows, and grounded answers.',
   },
   {
-    title: 'AI THAT SHIPS.',
-    body: 'Computer vision isn\'t a demo for me — it\'s production systems processing real camera feeds. Detection, tracking, OCR, all running in real time with models I trained and deployed.',
+    title: 'PRODUCTS THAT CONVERT.',
+    body: 'From Clipzy to FamLink to construction and healthcare sites — I ship full-stack products clients can point to, not prototypes stuck on localhost.',
   },
 ]
 
 export const SOCIALS = {
-  linkedin: 'https://www.linkedin.com/in/abdullah-yaseen1',
-  github: 'https://github.com/AbdullahYaseen01',
-  whatsapp: 'https://wa.me/923192560463',
-  whatsappDisplay: '+92 319 2560463',
+  linkedin: 'https://www.linkedin.com/in/ali-raza-chaudhry',
+  github: 'https://github.com/alirazach476',
+  whatsapp: 'https://wa.me/923226085459',
+  whatsappDisplay: '+92 322 6085459',
 }

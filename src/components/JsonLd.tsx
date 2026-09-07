@@ -1,26 +1,29 @@
 import { SOCIALS } from '../data/content'
 
-const SITE_URL = 'https://abdullahyaseen.dev'
+const SITE_URL = 'https://github.com/alirazach476'
 
 export function JsonLd() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Abdullah Yaseen',
-    jobTitle: 'Full-Stack Developer & AI / Computer Vision Engineer',
+    name: 'Ali Raza Chaudhry',
+    jobTitle: 'AI/ML Engineer | Data Scientist | Computer Vision | Generative AI',
     description:
-      'I build interfaces that convert — and AI that sees. Full-stack web development and real-time computer vision systems.',
+      'AI/ML Engineer and Data Scientist building computer vision systems, generative AI agents, RAG apps, and full-stack products.',
     url: SITE_URL,
-    email: 'abdullahyaseen6500@gmail.com',
+    email: 'alirazach1003@gmail.com',
     sameAs: [SOCIALS.linkedin, SOCIALS.github],
     knowsAbout: [
-      'React',
-      'TypeScript',
       'Computer Vision',
       'YOLO',
       'OpenCV',
-      'Node.js',
+      'PyTorch',
       'Machine Learning',
+      'LangChain',
+      'LangGraph',
+      'RAG',
+      'React',
+      'FastAPI',
     ],
   }
 

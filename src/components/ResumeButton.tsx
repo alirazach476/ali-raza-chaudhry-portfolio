@@ -1,6 +1,6 @@
 import { MagneticButton } from './MagneticButton'
 
-export const RESUME_URL = '/Abdullah-Yaseen-Resume.pdf'
+export const RESUME_URL = '/ALI_RAZA_CHAUDHRY.pdf'
 
 interface ResumeButtonProps {
   variant?: 'primary' | 'outline' | 'ghost'
@@ -23,8 +23,8 @@ export function ResumeButton({
         variant={variant}
         className={className}
         strength={0.25}
-        download="Abdullah-Yaseen-Resume.pdf"
-        aria-label="Download Abdullah Yaseen resume PDF"
+        download="ALI_RAZA_CHAUDHRY.pdf"
+        aria-label="Download Ali Raza Chaudhry resume PDF"
       >
         {label}
       </MagneticButton>

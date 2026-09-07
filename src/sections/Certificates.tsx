@@ -21,10 +21,30 @@ const ISSUER_STYLES: Record<
     glow: 'rgba(124, 58, 237, 0.18)',
     badge: 'text-violet-300 border-violet/30 bg-violet/10',
   },
-  Workcango: {
+  'OpenCV University': {
     gradient: 'from-cyan/20 to-teal-500/10',
     glow: 'rgba(34, 211, 238, 0.18)',
     badge: 'text-cyan border-cyan/30 bg-cyan/10',
+  },
+  Google: {
+    gradient: 'from-amber/20 to-orange-500/10',
+    glow: 'rgba(245, 158, 11, 0.18)',
+    badge: 'text-amber-300 border-amber/30 bg-amber/10',
+  },
+  'Global Skills Academy': {
+    gradient: 'from-emerald-500/20 to-cyan/10',
+    glow: 'rgba(16, 185, 129, 0.18)',
+    badge: 'text-emerald-300 border-emerald-400/30 bg-emerald-500/10',
+  },
+  'DeepLearn Academy': {
+    gradient: 'from-indigo/20 to-violet/10',
+    glow: 'rgba(99, 102, 241, 0.18)',
+    badge: 'text-indigo-300 border-indigo-400/30 bg-indigo-500/10',
+  },
+  UniAthena: {
+    gradient: 'from-pink/20 to-rose-500/10',
+    glow: 'rgba(244, 114, 182, 0.18)',
+    badge: 'text-pink-300 border-pink/30 bg-pink/10',
   },
 }
 

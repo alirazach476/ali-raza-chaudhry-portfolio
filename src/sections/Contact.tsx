@@ -118,11 +118,11 @@ export function Contact() {
             }}
             aria-hidden="true"
           >
-            ABDULLAH YASEEN
+            ALI RAZA CHAUDHRY
           </div>
 
           <p className="mt-8 text-[10px] tracking-[0.2em] uppercase text-text-muted">
-            © {new Date().getFullYear()} Abdullah Yaseen · Built with React & Three.js
+            © {new Date().getFullYear()} Ali Raza Chaudhry · Built with React & Three.js
           </p>
         </div>
       </div>
