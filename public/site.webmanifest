@@ -1,0 +1,16 @@
+{
+  "name": "Ali Raza Chaudhry — AI/ML Engineer · Data Scientist · Software Engineer",
+  "short_name": "Ali Raza Chaudhry",
+  "description": "AI/ML Engineer · Data Scientist · Software Engineer | Computer Vision | Generative AI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070708",
+  "theme_color": "#7C3AED",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
