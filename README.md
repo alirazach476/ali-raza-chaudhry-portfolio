@@ -27,7 +27,6 @@ npm run dev
 | Bayesian Military Aid Analysis | [bayesian-analysis.vercel.app](https://bayesian-analysis.vercel.app/) |
 | Bayesian Insurance Cost BI | [real-world-dataset-bayesian-analysi.vercel.app](https://real-world-dataset-bayesian-analysi.vercel.app/) |
 | DDoS Detection BI | [ddos-detection-bi.vercel.app](https://ddos-detection-bi.vercel.app/) |
-| Lahore Air Quality Intelligence | [lahoreairquality.vercel.app](https://lahoreairquality.vercel.app/) |
 
 ### Web Development
 | Project | Live |

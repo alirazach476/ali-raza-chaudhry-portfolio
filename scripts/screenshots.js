@@ -60,12 +60,6 @@ const sites = [
   },
   { name: 'steppingstone', url: 'https://stteppingstone.netlify.app', wait: 3000, until: 'networkidle' },
   {
-    name: 'lahore-aqi',
-    url: 'https://lahoreairquality.vercel.app/',
-    wait: 5000,
-    until: 'networkidle',
-  },
-  {
     name: 'rideflow',
     url: 'https://rideflow-analytics-eight.vercel.app/',
     wait: 5000,
