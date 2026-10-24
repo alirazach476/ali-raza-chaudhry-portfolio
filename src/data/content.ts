@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 34, suffix: '' },
-    { label: 'Live Demos', value: 24, suffix: '' },
+    { label: 'Projects Shown', value: 35, suffix: '' },
+    { label: 'Live Demos', value: 25, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -276,6 +276,15 @@ export const WEB_PROJECTS = [
 ]
 
 export const DATA_PROJECTS = [
+  {
+    name: 'Pakistan Environmental Analytics',
+    slug: 'pk-environment',
+    url: 'https://pakistanenvironmentalanalytics.vercel.app/',
+    description:
+      'Air quality and weather analytics for 339 places in Pakistan (948K city-days, 2018–2026) — tested pandas/Parquet pipeline, Newey–West trends with FDR control, model-artifact detection, and a static Plotly.js dashboard.',
+    tags: ['Python', 'pandas', 'statsmodels', 'Plotly'],
+    gradient: 'from-teal/30 via-cyan/20 to-indigo/30',
+  },
   {
     name: 'RideFlow Analytics',
     slug: 'rideflow',
