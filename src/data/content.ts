@@ -277,15 +277,6 @@ export const WEB_PROJECTS = [
 
 export const DATA_PROJECTS = [
   {
-    name: 'Lahore Air Quality Intelligence',
-    slug: 'lahore-aqi',
-    url: 'https://lahoreairquality.vercel.app/',
-    description:
-      'End-to-end Lahore air-quality platform — OpenAQ + Open-Meteo ingestion, PostgreSQL warehouse with dbt transforms, US EPA AQI, XGBoost/SARIMA forecasts, FastAPI, and a React dashboard.',
-    tags: ['PostgreSQL', 'dbt', 'XGBoost', 'FastAPI'],
-    gradient: 'from-cyan/30 via-teal/20 to-indigo/30',
-  },
-  {
     name: 'RideFlow Analytics',
     slug: 'rideflow',
     url: 'https://rideflow-analytics-eight.vercel.app/',
@@ -356,6 +347,15 @@ export const DATA_PROJECTS = [
       'ML/DL DDoS detection on SDN flows — model leaderboard, confusion matrices, feature importances, and attack traffic profiling.',
     tags: ['Random Forest', 'CNN', 'ML', 'Cybersecurity'],
     gradient: 'from-pink/20 via-violet/30 to-cyan/20',
+  },
+  {
+    name: 'Lahore Air Quality Intelligence',
+    slug: 'lahore-aqi',
+    url: 'https://lahoreairquality.vercel.app/',
+    description:
+      'End-to-end Lahore air-quality platform — OpenAQ + Open-Meteo ingestion, PostgreSQL warehouse with dbt transforms, US EPA AQI, XGBoost/SARIMA forecasts, FastAPI, and a React dashboard.',
+    tags: ['PostgreSQL', 'dbt', 'XGBoost', 'FastAPI'],
+    gradient: 'from-cyan/30 via-teal/20 to-indigo/30',
   },
 ]
 

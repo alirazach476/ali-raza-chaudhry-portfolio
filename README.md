@@ -19,7 +19,6 @@ npm run dev
 ### Data Science · Data Engineering
 | Project | Live |
 |:--------|:-----|
-| Lahore Air Quality Intelligence | [lahoreairquality.vercel.app](https://lahoreairquality.vercel.app/) |
 | RideFlow Analytics | [rideflow-analytics-eight.vercel.app](https://rideflow-analytics-eight.vercel.app/) |
 | NovaBank Transaction Analytics | [banking-transaction-analytics.vercel.app/dashboard](https://banking-transaction-analytics.vercel.app/dashboard) |
 | Pakistan E-commerce Analytics | [pakistanecommerce.vercel.app](https://pakistanecommerce.vercel.app/) |
@@ -28,6 +27,7 @@ npm run dev
 | Bayesian Military Aid Analysis | [bayesian-analysis.vercel.app](https://bayesian-analysis.vercel.app/) |
 | Bayesian Insurance Cost BI | [real-world-dataset-bayesian-analysi.vercel.app](https://real-world-dataset-bayesian-analysi.vercel.app/) |
 | DDoS Detection BI | [ddos-detection-bi.vercel.app](https://ddos-detection-bi.vercel.app/) |
+| Lahore Air Quality Intelligence | [lahoreairquality.vercel.app](https://lahoreairquality.vercel.app/) |
 
 ### Web Development
 | Project | Live |
