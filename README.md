@@ -19,6 +19,7 @@ npm run dev
 ### Data Science · Data Engineering
 | Project | Live |
 |:--------|:-----|
+| Lahore Air Quality Intelligence | [lahoreairquality.vercel.app](https://lahoreairquality.vercel.app/) |
 | RideFlow Analytics | [rideflow-analytics-eight.vercel.app](https://rideflow-analytics-eight.vercel.app/) |
 | NovaBank Transaction Analytics | [banking-transaction-analytics.vercel.app/dashboard](https://banking-transaction-analytics.vercel.app/dashboard) |
 | Pakistan E-commerce Analytics | [pakistanecommerce.vercel.app](https://pakistanecommerce.vercel.app/) |

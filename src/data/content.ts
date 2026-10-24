@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 34, suffix: '' },
-    { label: 'Live Demos', value: 24, suffix: '' },
+    { label: 'Projects Shown', value: 35, suffix: '' },
+    { label: 'Live Demos', value: 25, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -276,6 +276,15 @@ export const WEB_PROJECTS = [
 ]
 
 export const DATA_PROJECTS = [
+  {
+    name: 'Lahore Air Quality Intelligence',
+    slug: 'lahore-aqi',
+    url: 'https://lahoreairquality.vercel.app/',
+    description:
+      'End-to-end Lahore air-quality platform — OpenAQ + Open-Meteo ingestion, PostgreSQL warehouse with dbt transforms, US EPA AQI, XGBoost/SARIMA forecasts, FastAPI, and a React dashboard.',
+    tags: ['PostgreSQL', 'dbt', 'XGBoost', 'FastAPI'],
+    gradient: 'from-cyan/30 via-teal/20 to-indigo/30',
+  },
   {
     name: 'RideFlow Analytics',
     slug: 'rideflow',
