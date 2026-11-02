@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 35, suffix: '' },
-    { label: 'Live Demos', value: 25, suffix: '' },
+    { label: 'Projects Shown', value: 37, suffix: '' },
+    { label: 'Live Demos', value: 26, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -356,6 +356,15 @@ export const DATA_PROJECTS = [
       'ML/DL DDoS detection on SDN flows — model leaderboard, confusion matrices, feature importances, and attack traffic profiling.',
     tags: ['Random Forest', 'CNN', 'ML', 'Cybersecurity'],
     gradient: 'from-pink/20 via-violet/30 to-cyan/20',
+  },
+  {
+    name: 'PharmaScope Intelligence',
+    slug: 'pharmascope',
+    url: 'https://pharmascope-peach.vercel.app/',
+    description:
+      'Pharmaceutical intelligence platform — OpenFDA medicine, adverse-event, and recall data in a medallion lakehouse (DuckDB), FastAPI analytics, and a React dashboard with a labeled 50M-scale medicine catalog.',
+    tags: ['DuckDB', 'FastAPI', 'OpenFDA', 'React'],
+    gradient: 'from-teal/30 via-indigo/30 to-violet/20',
   },
 ]
 

@@ -28,6 +28,7 @@ npm run dev
 | Bayesian Military Aid Analysis | [bayesian-analysis.vercel.app](https://bayesian-analysis.vercel.app/) |
 | Bayesian Insurance Cost BI | [real-world-dataset-bayesian-analysi.vercel.app](https://real-world-dataset-bayesian-analysi.vercel.app/) |
 | DDoS Detection BI | [ddos-detection-bi.vercel.app](https://ddos-detection-bi.vercel.app/) |
+| PharmaScope Intelligence | [pharmascope-peach.vercel.app](https://pharmascope-peach.vercel.app/) |
 
 ### Web Development
 | Project | Live |

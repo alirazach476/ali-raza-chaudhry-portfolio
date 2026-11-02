@@ -114,6 +114,12 @@ const sites = [
     until: 'networkidle',
   },
   {
+    name: 'pharmascope',
+    url: 'https://pharmascope-peach.vercel.app/',
+    wait: 5000,
+    until: 'networkidle',
+  },
+  {
     name: 'crown',
     url: 'https://crown-and-dial.netlify.app',
     wait: 4000,
