@@ -363,7 +363,7 @@ export const DATA_PROJECTS = [
     url: 'https://pharmascope-peach.vercel.app/',
     description:
       'Pharmaceutical intelligence platform — OpenFDA medicine, adverse-event, and recall data in a medallion lakehouse (DuckDB), FastAPI analytics, and a React dashboard with a labeled 50M-scale medicine catalog.',
-    tags: ['DuckDB', 'FastAPI', 'OpenFDA', 'React'],
+    tags: ['Python', 'pandas', 'DuckDB', 'FastAPI'],
     gradient: 'from-teal/30 via-indigo/30 to-violet/20',
   },
 ]
