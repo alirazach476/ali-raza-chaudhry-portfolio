@@ -120,6 +120,12 @@ const sites = [
     until: 'networkidle',
   },
   {
+    name: 'peip-2024',
+    url: 'https://pakelection2024.vercel.app/',
+    wait: 5000,
+    until: 'networkidle',
+  },
+  {
     name: 'crown',
     url: 'https://crown-and-dial.netlify.app',
     wait: 4000,

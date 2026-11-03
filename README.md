@@ -29,6 +29,7 @@ npm run dev
 | Bayesian Insurance Cost BI | [real-world-dataset-bayesian-analysi.vercel.app](https://real-world-dataset-bayesian-analysi.vercel.app/) |
 | DDoS Detection BI | [ddos-detection-bi.vercel.app](https://ddos-detection-bi.vercel.app/) |
 | PharmaScope Intelligence | [pharmascope-peach.vercel.app](https://pharmascope-peach.vercel.app/) |
+| Pakistan Election Intelligence (PEIP-2024) | [pakelection2024.vercel.app](https://pakelection2024.vercel.app/) |
 
 ### Web Development
 | Project | Live |

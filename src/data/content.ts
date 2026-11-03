@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 37, suffix: '' },
-    { label: 'Live Demos', value: 26, suffix: '' },
+    { label: 'Projects Shown', value: 38, suffix: '' },
+    { label: 'Live Demos', value: 27, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -365,6 +365,15 @@ export const DATA_PROJECTS = [
       'Pharmaceutical intelligence platform — OpenFDA medicine, adverse-event, and recall data in a medallion lakehouse (DuckDB), FastAPI analytics, and a React dashboard with a labeled 50M-scale medicine catalog.',
     tags: ['Python', 'pandas', 'DuckDB', 'FastAPI'],
     gradient: 'from-teal/30 via-indigo/30 to-violet/20',
+  },
+  {
+    name: 'Pakistan Election Intelligence (PEIP-2024)',
+    slug: 'peip-2024',
+    url: 'https://pakelection2024.vercel.app/',
+    description:
+      'Form-45 GE-2024 intelligence platform — Excel/PDF ingestion with OCR, DuckDB/dbt medallion lakehouse, statistical research and unsupervised ML, FastAPI, and a React dashboard for coverage and data-quality investigation.',
+    tags: ['Python', 'pandas', 'DuckDB', 'dbt'],
+    gradient: 'from-emerald/30 via-teal/20 to-indigo/30',
   },
 ]
 
