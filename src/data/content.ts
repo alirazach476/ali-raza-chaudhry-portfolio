@@ -179,6 +179,34 @@ export const EXPERTISE = [
 
 export const WEB_PROJECTS = [
   {
+    name: 'Westora Style',
+    slug: 'westora',
+    url: 'https://westorastyle.com',
+    tags: ['E-commerce', 'Next.js', 'Tailwind CSS'],
+    gradient: 'from-amber/20 via-violet/30 to-cyan/20',
+  },
+  {
+    name: 'Watches Store (3D)',
+    slug: 'watches',
+    url: 'https://watchs-gray.vercel.app',
+    tags: ['React', 'Three.js', 'React Three Fiber'],
+    gradient: 'from-violet/40 via-cyan/20 to-indigo/30',
+  },
+  {
+    name: 'Fine Crafted Structures',
+    slug: 'construction',
+    url: 'https://constractioncompany.netlify.app',
+    tags: ['Next.js', 'React', 'Netlify'],
+    gradient: 'from-indigo/30 via-violet/30 to-cyan/20',
+  },
+  {
+    name: 'Crown and Dial',
+    slug: 'crown',
+    url: 'https://crown-and-dial.netlify.app',
+    tags: ['React', 'E-commerce', 'Netlify'],
+    gradient: 'from-violet/40 via-indigo/30 to-cyan/20',
+  },
+  {
     name: 'Clipzy',
     slug: 'clipzy',
     url: 'https://clipzy.xynovix.com',
@@ -204,13 +232,6 @@ export const WEB_PROJECTS = [
     gradient: 'from-indigo/40 via-violet/30 to-pink/20',
   },
   {
-    name: 'Westora Style',
-    slug: 'westora',
-    url: 'https://westorastyle.com',
-    tags: ['E-commerce', 'Next.js', 'Tailwind CSS'],
-    gradient: 'from-amber/20 via-violet/30 to-cyan/20',
-  },
-  {
     name: 'Healthy Start NC',
     slug: 'healthystartnc',
     url: 'https://healthystartnc.com',
@@ -225,25 +246,11 @@ export const WEB_PROJECTS = [
     gradient: 'from-amber/20 via-violet/30 to-indigo/20',
   },
   {
-    name: 'Watches Store (3D)',
-    slug: 'watches',
-    url: 'https://watchs-gray.vercel.app',
-    tags: ['React', 'Three.js', 'React Three Fiber'],
-    gradient: 'from-violet/40 via-cyan/20 to-indigo/30',
-  },
-  {
     name: 'Revara Real Estate',
     slug: 'revara',
     url: 'https://hotel-web-chi-tan.vercel.app',
     tags: ['Next.js', 'React'],
     gradient: 'from-indigo/30 via-cyan/20 to-violet/20',
-  },
-  {
-    name: 'Fine Crafted Structures',
-    slug: 'construction',
-    url: 'https://constractioncompany.netlify.app',
-    tags: ['Next.js', 'React', 'Netlify'],
-    gradient: 'from-indigo/30 via-violet/30 to-cyan/20',
   },
   {
     name: 'Stepping Stones CRI',
@@ -258,13 +265,6 @@ export const WEB_PROJECTS = [
     url: 'https://techloagenccy.netlify.app/',
     tags: ['Agency', 'React', 'Netlify'],
     gradient: 'from-cyan/30 via-violet/30 to-indigo/20',
-  },
-  {
-    name: 'Crown and Dial',
-    slug: 'crown',
-    url: 'https://crown-and-dial.netlify.app',
-    tags: ['React', 'E-commerce', 'Netlify'],
-    gradient: 'from-violet/40 via-indigo/30 to-cyan/20',
   },
   {
     name: 'NFT Marketplace',
