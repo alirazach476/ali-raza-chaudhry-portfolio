@@ -188,6 +188,13 @@ export const WEB_PROJECTS = [
     gradient: 'from-violet/40 via-indigo/30 to-cyan/20',
   },
   {
+    name: 'FamLink',
+    slug: 'famlink',
+    url: 'https://famlink.care',
+    tags: ['React', 'Full-Stack'],
+    gradient: 'from-cyan/30 via-violet/20 to-indigo/30',
+  },
+  {
     name: 'Smart Vehicle Gate Access',
     slug: 'alpr',
     url: 'https://automated-gate-access.vercel.app',
@@ -197,25 +204,11 @@ export const WEB_PROJECTS = [
     gradient: 'from-indigo/40 via-violet/30 to-pink/20',
   },
   {
-    name: 'Techlo Agency',
-    slug: 'techlo',
-    url: 'https://techloagenccy.netlify.app/',
-    tags: ['Agency', 'React', 'Netlify'],
-    gradient: 'from-cyan/30 via-violet/30 to-indigo/20',
-  },
-  {
     name: 'Westora Style',
     slug: 'westora',
     url: 'https://westorastyle.com',
     tags: ['E-commerce', 'Next.js', 'Tailwind CSS'],
     gradient: 'from-amber/20 via-violet/30 to-cyan/20',
-  },
-  {
-    name: 'Crown and Dial',
-    slug: 'crown',
-    url: 'https://crown-and-dial.netlify.app',
-    tags: ['React', 'E-commerce', 'Netlify'],
-    gradient: 'from-violet/40 via-indigo/30 to-cyan/20',
   },
   {
     name: 'Healthy Start NC',
@@ -239,6 +232,13 @@ export const WEB_PROJECTS = [
     gradient: 'from-violet/40 via-cyan/20 to-indigo/30',
   },
   {
+    name: 'Revara Real Estate',
+    slug: 'revara',
+    url: 'https://hotel-web-chi-tan.vercel.app',
+    tags: ['Next.js', 'React'],
+    gradient: 'from-indigo/30 via-cyan/20 to-violet/20',
+  },
+  {
     name: 'Fine Crafted Structures',
     slug: 'construction',
     url: 'https://constractioncompany.netlify.app',
@@ -253,11 +253,18 @@ export const WEB_PROJECTS = [
     gradient: 'from-pink/20 via-violet/30 to-indigo/20',
   },
   {
-    name: 'FamLink',
-    slug: 'famlink',
-    url: 'https://famlink.care',
-    tags: ['React', 'Full-Stack'],
-    gradient: 'from-cyan/30 via-violet/20 to-indigo/30',
+    name: 'Techlo Agency',
+    slug: 'techlo',
+    url: 'https://techloagenccy.netlify.app/',
+    tags: ['Agency', 'React', 'Netlify'],
+    gradient: 'from-cyan/30 via-violet/30 to-indigo/20',
+  },
+  {
+    name: 'Crown and Dial',
+    slug: 'crown',
+    url: 'https://crown-and-dial.netlify.app',
+    tags: ['React', 'E-commerce', 'Netlify'],
+    gradient: 'from-violet/40 via-indigo/30 to-cyan/20',
   },
   {
     name: 'NFT Marketplace',
@@ -265,13 +272,6 @@ export const WEB_PROJECTS = [
     url: 'https://nftmarketplaece.netlify.app',
     tags: ['React', 'Web3 UI'],
     gradient: 'from-violet/30 via-pink/20 to-indigo/20',
-  },
-  {
-    name: 'Revara Real Estate',
-    slug: 'revara',
-    url: 'https://hotel-web-chi-tan.vercel.app',
-    tags: ['Next.js', 'React'],
-    gradient: 'from-indigo/30 via-cyan/20 to-violet/20',
   },
 ]
 
@@ -295,13 +295,13 @@ export const DATA_PROJECTS = [
     gradient: 'from-teal/30 via-cyan/20 to-indigo/30',
   },
   {
-    name: 'RideFlow Analytics',
-    slug: 'rideflow',
-    url: 'https://rideflow-analytics-eight.vercel.app/',
+    name: 'Pakistan Election Intelligence (PEIP-2024)',
+    slug: 'peip-2024',
+    url: 'https://pakelection2024.vercel.app/',
     description:
-      'Executive ride BI on a live PostgreSQL warehouse — revenue trends, city performance, surge pricing, cancellations, and anomaly monitoring.',
-    tags: ['PostgreSQL', 'BI', 'Analytics', 'Anomaly Detection'],
-    gradient: 'from-cyan/30 via-violet/30 to-indigo/20',
+      'Form-45 GE-2024 intelligence platform — Excel/PDF ingestion with OCR, DuckDB/dbt medallion lakehouse, statistical research and unsupervised ML, FastAPI, and a React dashboard for coverage and data-quality investigation.',
+    tags: ['Python', 'pandas', 'DuckDB', 'dbt'],
+    gradient: 'from-emerald/30 via-teal/20 to-indigo/30',
   },
   {
     name: 'NovaBank Transaction Analytics',
@@ -313,13 +313,22 @@ export const DATA_PROJECTS = [
     gradient: 'from-indigo/40 via-cyan/20 to-violet/30',
   },
   {
-    name: 'Pakistan E-commerce Analytics',
-    slug: 'pk-ecommerce',
-    url: 'https://pakistanecommerce.vercel.app/',
+    name: 'RideFlow Analytics',
+    slug: 'rideflow',
+    url: 'https://rideflow-analytics-eight.vercel.app/',
     description:
-      'Full-funnel e-commerce BI in PKR — revenue, orders, AOV, category/province breakdowns, payments, logistics, and returns.',
-    tags: ['BI', 'E-commerce', 'SQL', 'Dashboard'],
-    gradient: 'from-violet/30 via-pink/20 to-cyan/20',
+      'Executive ride BI on a live PostgreSQL warehouse — revenue trends, city performance, surge pricing, cancellations, and anomaly monitoring.',
+    tags: ['PostgreSQL', 'BI', 'Analytics', 'Anomaly Detection'],
+    gradient: 'from-cyan/30 via-violet/30 to-indigo/20',
+  },
+  {
+    name: 'DDoS Detection BI',
+    slug: 'ddos-bi',
+    url: 'https://ddos-detection-bi.vercel.app/',
+    description:
+      'ML/DL DDoS detection on SDN flows — model leaderboard, confusion matrices, feature importances, and attack traffic profiling.',
+    tags: ['Random Forest', 'CNN', 'ML', 'Cybersecurity'],
+    gradient: 'from-pink/20 via-violet/30 to-cyan/20',
   },
   {
     name: 'AI Market Price Intelligence',
@@ -329,6 +338,15 @@ export const DATA_PROJECTS = [
       'Market intelligence platform for price analysis and competitive signal tracking across product markets.',
     tags: ['Python', 'Pricing', 'Analytics', 'BI'],
     gradient: 'from-amber/20 via-violet/30 to-indigo/20',
+  },
+  {
+    name: 'PharmaScope Intelligence',
+    slug: 'pharmascope',
+    url: 'https://pharmascope-peach.vercel.app/',
+    description:
+      'Pharmaceutical intelligence platform — OpenFDA medicine, adverse-event, and recall data in a medallion lakehouse (DuckDB), FastAPI analytics, and a React dashboard with a labeled 50M-scale medicine catalog.',
+    tags: ['Python', 'pandas', 'DuckDB', 'FastAPI'],
+    gradient: 'from-teal/30 via-indigo/30 to-violet/20',
   },
   {
     name: 'Chicken Price Time Series BI',
@@ -358,44 +376,26 @@ export const DATA_PROJECTS = [
     gradient: 'from-indigo/30 via-violet/30 to-pink/20',
   },
   {
-    name: 'DDoS Detection BI',
-    slug: 'ddos-bi',
-    url: 'https://ddos-detection-bi.vercel.app/',
+    name: 'Pakistan E-commerce Analytics',
+    slug: 'pk-ecommerce',
+    url: 'https://pakistanecommerce.vercel.app/',
     description:
-      'ML/DL DDoS detection on SDN flows — model leaderboard, confusion matrices, feature importances, and attack traffic profiling.',
-    tags: ['Random Forest', 'CNN', 'ML', 'Cybersecurity'],
-    gradient: 'from-pink/20 via-violet/30 to-cyan/20',
-  },
-  {
-    name: 'PharmaScope Intelligence',
-    slug: 'pharmascope',
-    url: 'https://pharmascope-peach.vercel.app/',
-    description:
-      'Pharmaceutical intelligence platform — OpenFDA medicine, adverse-event, and recall data in a medallion lakehouse (DuckDB), FastAPI analytics, and a React dashboard with a labeled 50M-scale medicine catalog.',
-    tags: ['Python', 'pandas', 'DuckDB', 'FastAPI'],
-    gradient: 'from-teal/30 via-indigo/30 to-violet/20',
-  },
-  {
-    name: 'Pakistan Election Intelligence (PEIP-2024)',
-    slug: 'peip-2024',
-    url: 'https://pakelection2024.vercel.app/',
-    description:
-      'Form-45 GE-2024 intelligence platform — Excel/PDF ingestion with OCR, DuckDB/dbt medallion lakehouse, statistical research and unsupervised ML, FastAPI, and a React dashboard for coverage and data-quality investigation.',
-    tags: ['Python', 'pandas', 'DuckDB', 'dbt'],
-    gradient: 'from-emerald/30 via-teal/20 to-indigo/30',
+      'Full-funnel e-commerce BI in PKR — revenue, orders, AOV, category/province breakdowns, payments, logistics, and returns.',
+    tags: ['BI', 'E-commerce', 'SQL', 'Dashboard'],
+    gradient: 'from-violet/30 via-pink/20 to-cyan/20',
   },
 ]
 
 export const AI_PROJECTS = [
   {
-    name: 'AI Baseball Swing Analyzer',
-    slug: 'baseball',
-    url: 'https://github.com/alirazach476/ai-baseball-swing-analyzer',
+    name: 'Automatic Vehicle Gate Access (FYP)',
+    slug: 'alpr',
+    url: 'https://github.com/alirazach476/Smart-Vehicle-Access-System-LPD-VMMR',
     description:
-      'Pose estimation for pitcher & batter, swing-phase detection, mound/strike-zone tracking, and biomechanics scoring dashboard.',
-    tags: ['MediaPipe', 'YOLO', 'Pose', 'Streamlit'],
-    image: '/ai/baseball.jpg',
-    video: '/ai/baseball.mp4',
+      'Edge-AI smart gate: YOLOv8n plate + character OCR, EfficientNet-B4 make/model, fog/rain/night preprocessing, dual-modality authorization, Orange Pi → React dashboard.',
+    tags: ['YOLOv8n', 'EfficientNet', 'ALPR', 'VMMR', 'Edge AI'],
+    image: '/ai/alpr.jpg',
+    video: '/ai/alpr.mp4',
   },
   {
     name: 'Cricket Match Analytics',
@@ -408,6 +408,16 @@ export const AI_PROJECTS = [
     video: '/ai/cricket.mp4',
   },
   {
+    name: 'UFC Vision AI',
+    slug: 'ufc-vision',
+    url: 'https://github.com/alirazach476/UFC-Analysis',
+    description:
+      'Real-time MMA fight analysis: fighter detection & pose skeletons, punch/kick/grapple counters, stance & balance metrics, range measurement, and octagon heatmaps.',
+    tags: ['YOLO', 'Pose', 'Tracking', 'Sports AI'],
+    image: '/ai/ufc-vision.jpg',
+    video: '/ai/ufc-vision.mp4',
+  },
+  {
     name: 'Smart Football Analysis',
     slug: 'football',
     url: 'https://github.com/alirazach476/Smart-Football-Analysis',
@@ -418,14 +428,14 @@ export const AI_PROJECTS = [
     video: '/ai/football.mp4',
   },
   {
-    name: 'UFC Vision AI',
-    slug: 'ufc-vision',
-    url: 'https://github.com/alirazach476/UFC-Analysis',
+    name: 'AI Baseball Swing Analyzer',
+    slug: 'baseball',
+    url: 'https://github.com/alirazach476/ai-baseball-swing-analyzer',
     description:
-      'Real-time MMA fight analysis: fighter detection & pose skeletons, punch/kick/grapple counters, stance & balance metrics, range measurement, and octagon heatmaps.',
-    tags: ['YOLO', 'Pose', 'Tracking', 'Sports AI'],
-    image: '/ai/ufc-vision.jpg',
-    video: '/ai/ufc-vision.mp4',
+      'Pose estimation for pitcher & batter, swing-phase detection, mound/strike-zone tracking, and biomechanics scoring dashboard.',
+    tags: ['MediaPipe', 'YOLO', 'Pose', 'Streamlit'],
+    image: '/ai/baseball.jpg',
+    video: '/ai/baseball.mp4',
   },
   {
     name: 'AI Golf Skeleton & Swing',
@@ -438,14 +448,14 @@ export const AI_PROJECTS = [
     video: '/ai/golf.mp4',
   },
   {
-    name: 'Automatic Vehicle Gate Access (FYP)',
-    slug: 'alpr',
-    url: 'https://github.com/alirazach476/Smart-Vehicle-Access-System-LPD-VMMR',
+    name: 'Multi-Person Tracking',
+    slug: 'tracking',
+    url: 'https://github.com/alirazach476/Multi-Person-Tracking',
     description:
-      'Edge-AI smart gate: YOLOv8n plate + character OCR, EfficientNet-B4 make/model, fog/rain/night preprocessing, dual-modality authorization, Orange Pi → React dashboard.',
-    tags: ['YOLOv8n', 'EfficientNet', 'ALPR', 'VMMR', 'Edge AI'],
-    image: '/ai/alpr.jpg',
-    video: '/ai/alpr.mp4',
+      'Persistent ID tracking across multiple people with trajectory trails for crowded outdoor scenes.',
+    tags: ['YOLOv8', 'DeepSORT', 'Real-Time'],
+    image: '/ai/tracking.jpg',
+    video: '/ai/tracking.mp4',
   },
   {
     name: 'Vehicle Damage & Billing',
@@ -468,26 +478,6 @@ export const AI_PROJECTS = [
     video: '/ai/medicine.mp4',
   },
   {
-    name: 'Mechanical Tools Detection',
-    slug: 'mechanical-tools',
-    url: 'https://github.com/alirazach476/mechanical-tools',
-    description:
-      'Real-time detection of hammers, wrenches, pliers, screwdrivers, and drills with confidence and size metrics.',
-    tags: ['YOLO', 'OpenCV', 'Detection'],
-    image: '/ai/mechanical-tools.jpg',
-    video: '/ai/mechanical-tools.mp4',
-  },
-  {
-    name: 'Multi-Person Tracking',
-    slug: 'tracking',
-    url: 'https://github.com/alirazach476/Multi-Person-Tracking',
-    description:
-      'Persistent ID tracking across multiple people with trajectory trails for crowded outdoor scenes.',
-    tags: ['YOLOv8', 'DeepSORT', 'Real-Time'],
-    image: '/ai/tracking.jpg',
-    video: '/ai/tracking.mp4',
-  },
-  {
     name: 'Driving Hand-Signal Interpreter',
     slug: 'driver-safety',
     url: 'https://github.com/alirazach476/ai_driving_hand_signal',
@@ -496,6 +486,16 @@ export const AI_PROJECTS = [
     tags: ['MediaPipe', 'OpenCV', 'Hand Landmarks'],
     image: '/ai/driver-safety.jpg',
     video: '/ai/driver-safety.mp4',
+  },
+  {
+    name: 'Mechanical Tools Detection',
+    slug: 'mechanical-tools',
+    url: 'https://github.com/alirazach476/mechanical-tools',
+    description:
+      'Real-time detection of hammers, wrenches, pliers, screwdrivers, and drills with confidence and size metrics.',
+    tags: ['YOLO', 'OpenCV', 'Detection'],
+    image: '/ai/mechanical-tools.jpg',
+    video: '/ai/mechanical-tools.mp4',
   },
 ]
 
