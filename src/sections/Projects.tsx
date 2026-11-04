@@ -4,7 +4,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SectionHeading } from '../components/SectionHeading'
 import { TiltCard } from '../components/TiltCard'
-import { MagneticButton } from '../components/MagneticButton'
 import { AICardMedia } from '../components/AICardMedia'
 import { ProjectScreenshot } from '../components/ProjectScreenshot'
 import { VideoLightbox } from '../components/VideoLightbox'
@@ -50,9 +49,17 @@ function WebProjectCard({
       </div>
 
       <div className="p-5 md:p-6 flex flex-col flex-1">
-        <h3 className="font-display text-lg md:text-xl mb-2 text-white leading-snug tracking-tight">
-          {project.name}
-        </h3>
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="no-underline"
+          data-cursor-hover
+        >
+          <h3 className="font-display text-lg md:text-xl mb-2 text-white hover:text-cyan transition-colors leading-snug tracking-tight">
+            {project.name}
+          </h3>
+        </a>
         {description && (
           <p className="text-text-muted text-sm mb-4 leading-relaxed">{description}</p>
         )}
@@ -73,15 +80,15 @@ function WebProjectCard({
               Read case study →
             </Link>
           )}
-          <MagneticButton
-            as="a"
+          <a
             href={project.url}
-            variant="ghost"
-            className="!px-0 !py-0 text-cyan hover:!text-cyan text-sm font-medium"
-            strength={0.2}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="-my-2 py-2 text-sm text-cyan hover:text-white transition-colors font-medium"
+            data-cursor-hover
           >
             View Live ↗
-          </MagneticButton>
+          </a>
           {githubUrl && (
             <a
               href={githubUrl}
