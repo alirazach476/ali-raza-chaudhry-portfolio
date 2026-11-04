@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 38, suffix: '' },
-    { label: 'Live Demos', value: 27, suffix: '' },
+    { label: 'Projects Shown', value: 39, suffix: '' },
+    { label: 'Live Demos', value: 28, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -276,6 +276,15 @@ export const WEB_PROJECTS = [
 ]
 
 export const DATA_PROJECTS = [
+  {
+    name: 'ICC Cricket Analytics',
+    slug: 'icc-cricket',
+    url: 'https://icccricketanaylsis.vercel.app/',
+    description:
+      "Men's ICC World Cups, Champions Trophy and Test Championship — web-scraped ESPNcricinfo + Cricsheet data (1,000+ matches, 680K deliveries) through a bronze/silver/gold DuckDB lakehouse with dbt, leakage-safe win and score models, and a React + FastAPI match centre.",
+    tags: ['Web Scraping', 'DuckDB', 'dbt', 'XGBoost', 'FastAPI'],
+    gradient: 'from-indigo/30 via-teal/20 to-cyan/30',
+  },
   {
     name: 'Pakistan Environmental Analytics',
     slug: 'pk-environment',

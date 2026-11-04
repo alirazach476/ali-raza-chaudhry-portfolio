@@ -60,6 +60,12 @@ const sites = [
   },
   { name: 'steppingstone', url: 'https://stteppingstone.netlify.app', wait: 3000, until: 'networkidle' },
   {
+    name: 'icc-cricket',
+    url: 'https://icccricketanaylsis.vercel.app/',
+    wait: 8000,
+    until: 'networkidle',
+  },
+  {
     name: 'pk-environment',
     url: 'https://pakistanenvironmentalanalytics.vercel.app/',
     wait: 5000,
