@@ -66,6 +66,12 @@ const sites = [
     until: 'networkidle',
   },
   {
+    name: 'football-analytics',
+    url: 'https://football-analytics-xi.vercel.app/',
+    wait: 8000,
+    until: 'networkidle',
+  },
+  {
     name: 'pk-environment',
     url: 'https://pakistanenvironmentalanalytics.vercel.app/',
     wait: 5000,

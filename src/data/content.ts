@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 39, suffix: '' },
-    { label: 'Live Demos', value: 28, suffix: '' },
+    { label: 'Projects Shown', value: 40, suffix: '' },
+    { label: 'Live Demos', value: 29, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -284,6 +284,15 @@ export const DATA_PROJECTS = [
       "Men's ICC World Cups, Champions Trophy and Test Championship — web-scraped ESPNcricinfo + Cricsheet data (1,000+ matches, 680K deliveries) through a bronze/silver/gold DuckDB lakehouse with dbt, leakage-safe win and score models, and a React + FastAPI match centre.",
     tags: ['Web Scraping', 'DuckDB', 'dbt', 'XGBoost', 'FastAPI'],
     gradient: 'from-indigo/30 via-teal/20 to-cyan/30',
+  },
+  {
+    name: 'Football Analytics Platform',
+    slug: 'football-analytics',
+    url: 'https://football-analytics-xi.vercel.app/',
+    description:
+      "World Cup, Euro, Copa América and Nations League — six open sources through a Bronze/Silver/Gold pipeline (1,830 matches, 1M+ events, 8,410 resolved players), PostgreSQL star schema with dbt, leakage-free ML, and a FastAPI + React dashboard with 85 charts.",
+    tags: ['PostgreSQL', 'dbt', 'XGBoost', 'FastAPI', 'React'],
+    gradient: 'from-cyan/30 via-indigo/20 to-teal/30',
   },
   {
     name: 'Pakistan Environmental Analytics',

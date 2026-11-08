@@ -20,6 +20,7 @@ npm run dev
 | Project | Live |
 |:--------|:-----|
 | ICC Cricket Analytics | [icccricketanaylsis.vercel.app](https://icccricketanaylsis.vercel.app/) |
+| Football Analytics Platform | [football-analytics-xi.vercel.app](https://football-analytics-xi.vercel.app/) |
 | Pakistan Environmental Analytics | [pakistanenvironmentalanalytics.vercel.app](https://pakistanenvironmentalanalytics.vercel.app/) |
 | RideFlow Analytics | [rideflow-analytics-eight.vercel.app](https://rideflow-analytics-eight.vercel.app/) |
 | NovaBank Transaction Analytics | [banking-transaction-analytics.vercel.app/dashboard](https://banking-transaction-analytics.vercel.app/dashboard) |

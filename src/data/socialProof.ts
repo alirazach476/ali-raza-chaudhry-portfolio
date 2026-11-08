@@ -4,8 +4,8 @@ export const AVAILABILITY = {
 }
 
 export const IMPACT_STATS = [
-  { label: 'Projects Shown', value: 39, suffix: '' },
-  { label: 'Live Demos', value: 28, suffix: '' },
+  { label: 'Projects Shown', value: 40, suffix: '' },
+  { label: 'Live Demos', value: 29, suffix: '' },
   { label: 'AI & CV Systems', value: 14, suffix: '' },
 ]
 
