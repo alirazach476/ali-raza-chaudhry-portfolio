@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 40, suffix: '' },
-    { label: 'Live Demos', value: 29, suffix: '' },
+    { label: 'Projects Shown', value: 41, suffix: '' },
+    { label: 'Live Demos', value: 30, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -279,9 +279,9 @@ export const DATA_PROJECTS = [
   {
     name: 'ICC Cricket Analytics',
     slug: 'icc-cricket',
-    url: 'https://icccricketanaylsis.vercel.app/',
+    url: 'https://icc-cricket-analytics.vercel.app/',
     description:
-      "Men's ICC World Cups, Champions Trophy and Test Championship — web-scraped ESPNcricinfo + Cricsheet data (1,000+ matches, 680K deliveries) through a bronze/silver/gold DuckDB lakehouse with dbt, leakage-safe win and score models, and a React + FastAPI match centre.",
+      "Men's ICC World Cups, Champions Trophy, Test Championship and Asia Cup — web-scraped ESPNcricinfo + Cricsheet data through a bronze/silver/gold DuckDB lakehouse with dbt, leakage-safe win and score models, and a React + FastAPI match centre with ball-by-ball detail.",
     tags: ['Web Scraping', 'DuckDB', 'dbt', 'XGBoost', 'FastAPI'],
     gradient: 'from-indigo/30 via-teal/20 to-cyan/30',
   },
@@ -293,6 +293,15 @@ export const DATA_PROJECTS = [
       "World Cup, Euro, Copa América and Nations League — six open sources through a Bronze/Silver/Gold pipeline (1,830 matches, 1M+ events, 8,410 resolved players), PostgreSQL star schema with dbt, leakage-free ML, and a FastAPI + React dashboard with 85 charts.",
     tags: ['PostgreSQL', 'dbt', 'XGBoost', 'FastAPI', 'React'],
     gradient: 'from-cyan/30 via-indigo/20 to-teal/30',
+  },
+  {
+    name: 'WWE Analytics',
+    slug: 'wwe-analytics',
+    url: 'https://wwe-anaylsis.vercel.app/',
+    description:
+      'WWE Premium Live Events 2000–2027 — 425 events, 3,384 matches and 2,033 wrestlers collected from MediaWiki into a dimensional warehouse and marts, served by FastAPI to a React + Plotly dashboard with event-logo theming and championship analytics.',
+    tags: ['Web Scraping', 'pandas', 'Data Warehouse', 'FastAPI', 'Plotly'],
+    gradient: 'from-pink/30 via-violet/20 to-amber/20',
   },
   {
     name: 'Pakistan Environmental Analytics',
