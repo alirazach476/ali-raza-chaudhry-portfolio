@@ -297,9 +297,9 @@ export const DATA_PROJECTS = [
   {
     name: 'WWE Analytics',
     slug: 'wwe-analytics',
-    url: 'https://wwe-anaylsis.vercel.app/',
+    url: 'https://wwe-ple-analytics.vercel.app/',
     description:
-      'WWE Premium Live Events 2000–2027 — 425 events, 3,384 matches and 2,033 wrestlers collected from MediaWiki into a dimensional warehouse and marts, served by FastAPI to a React + Plotly dashboard with event-logo theming and championship analytics.',
+      'WWE Premium Live Events 2000–2027 — 425 events, 3,272 matches and 1,249 wrestlers collected from MediaWiki into a dimensional warehouse and marts, served by FastAPI to a React + Plotly dashboard with event-logo theming and championship analytics.',
     tags: ['Web Scraping', 'pandas', 'Data Warehouse', 'FastAPI', 'Plotly'],
     gradient: 'from-pink/30 via-violet/20 to-amber/20',
   },
