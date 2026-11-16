@@ -1,8 +1,8 @@
 export const PROFILE = {
   email: 'alirazach1003@gmail.com',
   stats: [
-    { label: 'Projects Shown', value: 41, suffix: '' },
-    { label: 'Live Demos', value: 30, suffix: '' },
+    { label: 'Projects Shown', value: 42, suffix: '' },
+    { label: 'Live Demos', value: 31, suffix: '' },
     { label: 'AI & CV Systems', value: 14, suffix: '' },
   ],
   bio: `I'm an AI/ML Engineer, Data Scientist, and Software Engineer who builds end-to-end systems — from computer vision pipelines that detect, track, and recognize in real time, to generative AI agents, RAG apps, and polished web products. I work across Python, PyTorch, TensorFlow, OpenCV, YOLO, LangChain, LangGraph, FastAPI, React, and Next.js.`,
@@ -276,6 +276,15 @@ export const WEB_PROJECTS = [
 ]
 
 export const DATA_PROJECTS = [
+  {
+    name: 'Olympics Analysis',
+    slug: 'olympics-analysis',
+    url: 'https://olympicsanaylsis.vercel.app/',
+    description:
+      'Every Summer and Winter Olympics 1960–2026 — 35 Games, 132,901 athletes and 67,099 matches scraped from Olympedia and Wikipedia into a bronze/silver/gold SQLite warehouse (116 tables), a 100+ endpoint FastAPI, and a React + TypeScript site that re-themes itself for every edition.',
+    tags: ['Web Scraping', 'SQLite', 'FastAPI', 'React', 'XGBoost'],
+    gradient: 'from-amber/20 via-indigo/20 to-cyan/20',
+  },
   {
     name: 'ICC Cricket Analytics',
     slug: 'icc-cricket',

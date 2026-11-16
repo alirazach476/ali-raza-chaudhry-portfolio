@@ -66,6 +66,12 @@ const sites = [
     until: 'networkidle',
   },
   {
+    name: 'olympics-analysis',
+    url: 'https://olympicsanaylsis.vercel.app/',
+    wait: 8000,
+    until: 'networkidle',
+  },
+  {
     name: 'wwe-analytics',
     url: 'https://wwe-ple-analytics.vercel.app/',
     wait: 8000,

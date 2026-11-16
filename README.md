@@ -19,6 +19,7 @@ npm run dev
 ### Data Science · Data Engineering
 | Project | Live |
 |:--------|:-----|
+| Olympics Analysis | [olympicsanaylsis.vercel.app](https://olympicsanaylsis.vercel.app/) |
 | ICC Cricket Analytics | [icc-cricket-analytics.vercel.app](https://icc-cricket-analytics.vercel.app/) |
 | WWE Analytics | [wwe-ple-analytics.vercel.app](https://wwe-ple-analytics.vercel.app/) |
 | Football Analytics Platform | [football-analytics-xi.vercel.app](https://football-analytics-xi.vercel.app/) |
