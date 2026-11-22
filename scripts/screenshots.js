@@ -97,7 +97,7 @@ const sites = [
   },
   {
     name: 'novabank',
-    url: 'https://banking-transaction-analytics.vercel.app/dashboard',
+    url: 'https://banking-transaction-analytics.vercel.app/app/overview',
     wait: 5000,
     until: 'networkidle',
   },

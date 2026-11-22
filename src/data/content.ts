@@ -322,6 +322,15 @@ export const DATA_PROJECTS = [
     gradient: 'from-teal/30 via-cyan/20 to-indigo/30',
   },
   {
+    name: 'NovaBank Analytics Platform',
+    slug: 'novabank',
+    url: 'https://banking-transaction-analytics.vercel.app/app/overview',
+    description:
+      'Fictional-bank analytics platform — synthetic core-banking and 493K card-payment data (labelled as such) in a PostgreSQL warehouse with dbt (157 tests pass), payment reconciliation, anomaly detection and XGBoost models, plus real SBP / World Bank / BIS analysis, served by FastAPI to an 11-page React dashboard.',
+    tags: ['PostgreSQL', 'dbt', 'Airflow', 'XGBoost', 'FastAPI'],
+    gradient: 'from-indigo/40 via-cyan/20 to-violet/30',
+  },
+  {
     name: 'Pakistan Election Intelligence (PEIP-2024)',
     slug: 'peip-2024',
     url: 'https://pakelection2024.vercel.app/',
@@ -329,15 +338,6 @@ export const DATA_PROJECTS = [
       'Form-45 GE-2024 intelligence platform — Excel/PDF ingestion with OCR, DuckDB/dbt medallion lakehouse, statistical research and unsupervised ML, FastAPI, and a React dashboard for coverage and data-quality investigation.',
     tags: ['Python', 'pandas', 'DuckDB', 'dbt'],
     gradient: 'from-emerald/30 via-teal/20 to-indigo/30',
-  },
-  {
-    name: 'NovaBank Transaction Analytics',
-    slug: 'novabank',
-    url: 'https://banking-transaction-analytics.vercel.app/dashboard',
-    description:
-      'Warehouse-connected banking BI — channel volume, customer segments, branch performance, and a high-severity anomaly review queue.',
-    tags: ['PostgreSQL', 'BI', 'Finance', 'Anomaly Detection'],
-    gradient: 'from-indigo/40 via-cyan/20 to-violet/30',
   },
   {
     name: 'RideFlow Analytics',

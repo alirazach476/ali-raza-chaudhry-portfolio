@@ -25,7 +25,7 @@ npm run dev
 | Football Analytics Platform | [football-analytics-xi.vercel.app](https://football-analytics-xi.vercel.app/) |
 | Pakistan Environmental Analytics | [pakistanenvironmentalanalytics.vercel.app](https://pakistanenvironmentalanalytics.vercel.app/) |
 | RideFlow Analytics | [rideflow-analytics-eight.vercel.app](https://rideflow-analytics-eight.vercel.app/) |
-| NovaBank Transaction Analytics | [banking-transaction-analytics.vercel.app/dashboard](https://banking-transaction-analytics.vercel.app/dashboard) |
+| NovaBank Analytics Platform | [banking-transaction-analytics.vercel.app](https://banking-transaction-analytics.vercel.app/app/overview) |
 | Pakistan E-commerce Analytics | [pakistanecommerce.vercel.app](https://pakistanecommerce.vercel.app/) |
 | AI Market Price Intelligence | [ai-market-price-analysis.vercel.app](https://ai-market-price-analysis.vercel.app/) |
 | Chicken Price Time Series BI | [time-series-analysis-zeta.vercel.app](https://time-series-analysis-zeta.vercel.app/) |
